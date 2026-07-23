@@ -6,7 +6,7 @@
     <title>🔄 Gerak Melingkar - Media Interaktif Lengkap</title>
     <style>
         /* ================================================================
-           STYLE UTAMA – GERAK MELINGKAR INTERAKTIF
+           STYLE UTAMA
            ================================================================ */
 
         * {
@@ -44,6 +44,7 @@
             box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
+        /* ----- HEADER ----- */
         .header {
             display: flex;
             justify-content: space-between;
@@ -381,7 +382,7 @@
         }
 
         /* ================================================================
-           SIMULASI HUBUNGAN RODA-RODA (DIPERBAIKI)
+           SIMULASI HUBUNGAN RODA-RODA (BENAR)
            ================================================================ */
 
         .roda-layout {
@@ -538,6 +539,12 @@
         .roda-info .arrow {
             color: #6ab8e8;
             font-weight: 700;
+        }
+        .roda-info .rumus {
+            color: #d0e8f5;
+            font-family: 'Cambria', 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: 600;
         }
 
         /* ================================================================
@@ -1011,53 +1018,70 @@
                         </div>
                     </div>
 
-                    <!-- HUBUNGAN RODA-RODA (DIPERBAIKI) -->
+                    <!-- HUBUNGAN RODA-RODA (BENAR SESUAI GAMBAR) -->
                     <div class="materi-card" style="grid-column: 1 / -1; border-color: rgba(245, 166, 35, 0.2);">
                         <h3 style="color: #f5a623;">⚙️ Hubungan Roda-Roda</h3>
                         <p style="margin-bottom:12px;">Menghubungkan gerak melingkar pada beberapa roda yang saling terhubung. Ada <strong>3 jenis hubungan</strong>:</p>
 
                         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin:12px 0;">
+                            <!-- SEPOROS -->
                             <div style="background:rgba(0,0,0,0.2); border-radius:12px; padding:14px; border-left:3px solid #6ab8e8;">
-                                <h4 style="color:#6ab8e8; font-size:0.9rem;">🔗 Seporos / Sepusat</h4>
+                                <h4 style="color:#6ab8e8; font-size:0.9rem;">🔗 SEPOROS</h4>
                                 <p style="font-size:0.85rem; color:#b0c8e0; margin-top:4px;">Dua roda pada <strong>poros yang sama</strong>.</p>
                                 <div class="formula-box" style="margin:6px 0; padding:8px 12px; border-left-color:#6ab8e8;">
-                                    <div class="formula" style="font-size:1rem;">ω₁ = ω₂</div>
+                                    <div class="formula" style="font-size:1rem;">ω<sub>A</sub> = ω<sub>B</sub></div>
                                     <div class="desc" style="font-size:0.7rem;">Kecepatan sudut <strong>sama</strong></div>
+                                </div>
+                                <div class="formula-box" style="margin:6px 0; padding:8px 12px; border-left-color:#6ab8e8;">
+                                    <div class="formula" style="font-size:1rem;">v<sub>A</sub>/R<sub>A</sub> = v<sub>B</sub>/R<sub>B</sub></div>
+                                    <div class="desc" style="font-size:0.7rem;">v ∝ R (v sebanding dengan R)</div>
                                 </div>
                                 <p style="font-size:0.8rem; color:#8aaac0;">Contoh: <em>Roda gigi pada as roda yang sama</em></p>
                                 <p style="font-size:0.75rem; color:#6a8aaa; margin-top:4px;">Arah putaran: <strong>sama</strong></p>
                             </div>
+
+                            <!-- SETALI / SERANTAI -->
+                            <div style="background:rgba(0,0,0,0.2); border-radius:12px; padding:14px; border-left:3px solid #5ac87a;">
+                                <h4 style="color:#5ac87a; font-size:0.9rem;">🔧 SETALI / SERANTAI</h4>
+                                <p style="font-size:0.85rem; color:#b0c8e0; margin-top:4px;">Dua roda <strong>dihubungkan dengan rantai/sabuk</strong>.</p>
+                                <div class="formula-box" style="margin:6px 0; padding:8px 12px; border-left-color:#5ac87a;">
+                                    <div class="formula" style="font-size:1rem;">v<sub>A</sub> = v<sub>B</sub></div>
+                                    <div class="desc" style="font-size:0.7rem;">Kecepatan linear <strong>sama</strong></div>
+                                </div>
+                                <div class="formula-box" style="margin:6px 0; padding:8px 12px; border-left-color:#5ac87a;">
+                                    <div class="formula" style="font-size:1rem;">ω<sub>A</sub>·R<sub>A</sub> = ω<sub>B</sub>·R<sub>B</sub></div>
+                                    <div class="desc" style="font-size:0.7rem;">ω ∝ 1/R (ω berbanding terbalik dengan R)</div>
+                                </div>
+                                <p style="font-size:0.8rem; color:#8aaac0;">Contoh: <em>Rantai sepeda, sabuk mesin</em></p>
+                                <p style="font-size:0.75rem; color:#6a8aaa; margin-top:4px;">Arah putaran: <strong>sama</strong></p>
+                            </div>
+
+                            <!-- BERSINGGUNGAN -->
                             <div style="background:rgba(0,0,0,0.2); border-radius:12px; padding:14px; border-left:3px solid #f5c542;">
-                                <h4 style="color:#f5c542; font-size:0.9rem;">⛓️ Bersinggungan</h4>
+                                <h4 style="color:#f5c542; font-size:0.9rem;">⛓️ BERSINGGUNGAN</h4>
                                 <p style="font-size:0.85rem; color:#b0c8e0; margin-top:4px;">Dua roda <strong>bersentuhan langsung</strong>.</p>
                                 <div class="formula-box" style="margin:6px 0; padding:8px 12px; border-left-color:#f5c542;">
-                                    <div class="formula" style="font-size:1rem;">v₁ = v₂ &nbsp;→&nbsp; ω₁R₁ = ω₂R₂</div>
+                                    <div class="formula" style="font-size:1rem;">v<sub>A</sub> = v<sub>B</sub></div>
                                     <div class="desc" style="font-size:0.7rem;">Kecepatan linear <strong>sama</strong></div>
+                                </div>
+                                <div class="formula-box" style="margin:6px 0; padding:8px 12px; border-left-color:#f5c542;">
+                                    <div class="formula" style="font-size:1rem;">ω<sub>A</sub>·R<sub>A</sub> = ω<sub>B</sub>·R<sub>B</sub></div>
+                                    <div class="desc" style="font-size:0.7rem;">ω ∝ 1/R (ω berbanding terbalik dengan R)</div>
                                 </div>
                                 <p style="font-size:0.8rem; color:#8aaac0;">Contoh: <em>Roda gigi yang bersentuhan</em></p>
                                 <p style="font-size:0.75rem; color:#6a8aaa; margin-top:4px;">Arah putaran: <strong style="color:#e87a3a;">berlawanan</strong></p>
                             </div>
-                            <div style="background:rgba(0,0,0,0.2); border-radius:12px; padding:14px; border-left:3px solid #5ac87a;">
-                                <h4 style="color:#5ac87a; font-size:0.9rem;">🔧 Dihubungkan Tali/Rantai</h4>
-                                <p style="font-size:0.85rem; color:#b0c8e0; margin-top:4px;">Dua roda <strong>dihubungkan dengan sabuk/rantai</strong>.</p>
-                                <div class="formula-box" style="margin:6px 0; padding:8px 12px; border-left-color:#5ac87a;">
-                                    <div class="formula" style="font-size:1rem;">v₁ = v₂ &nbsp;→&nbsp; ω₁R₁ = ω₂R₂</div>
-                                    <div class="desc" style="font-size:0.7rem;">Kecepatan linear <strong>sama</strong></div>
-                                </div>
-                                <p style="font-size:0.8rem; color:#8aaac0;">Contoh: <em>Rantai sepeda, sabuk mesin</em></p>
-                                <p style="font-size:0.75rem; color:#6a8aaa; margin-top:4px;">Arah putaran: <strong style="color:#5ac87a;">sama</strong></p>
-                            </div>
                         </div>
 
                         <div class="concept-box" style="border-left-color:#f5a623;">
-                            <div class="label" style="color:#f5a623;">🎯 Perbedaan Utama</div>
+                            <div class="label" style="color:#f5a623;">🎯 Ringkasan Perbedaan</div>
                             <p style="font-size:0.9rem;">
-                                <strong>Seporos:</strong> ω sama, v berbeda (v ∝ R)<br />
-                                <strong>Bersinggungan:</strong> v sama, ω berbeda (ω ∝ 1/R) — <span style="color:#e87a3a;">arah berlawanan</span><br />
-                                <strong>Tali/Rantai:</strong> v sama, ω berbeda (ω ∝ 1/R) — <span style="color:#5ac87a;">arah sama</span>
+                                <strong>🔗 Seporos:</strong> ω sama, v berbeda (v ∝ R)<br />
+                                <strong>🔧 Setali/Serantai:</strong> v sama, ω berbeda (ω ∝ 1/R) — arah <span style="color:#5ac87a;">sama</span><br />
+                                <strong>⛓️ Bersinggungan:</strong> v sama, ω berbeda (ω ∝ 1/R) — arah <span style="color:#e87a3a;">berlawanan</span>
                                 <br /><br />
                                 <span style="color:#8aaac0; font-size:0.8rem;">
-                                    Rumus umum: <strong style="color:#f5c542;">ω₁ · R₁ = ω₂ · R₂</strong> (untuk bersinggungan & tali)
+                                    Rumus umum: <strong style="color:#f5c542;">v = ω·R</strong> selalu berlaku untuk semua jenis hubungan!
                                 </span>
                             </p>
                         </div>
@@ -1117,7 +1141,7 @@
             </div>
 
             <!-- ============================================================
-            TAB 3: SIMULASI HUBUNGAN RODA-RODA (DIPERBAIKI)
+            TAB 3: SIMULASI HUBUNGAN RODA-RODA (BENAR)
             ============================================================ -->
             <div class="tab-content" id="tab-roda">
                 <div class="roda-layout">
@@ -1127,46 +1151,48 @@
                     <div class="roda-controls">
                         <div class="roda-type-selector">
                             <button class="active" data-type="seporos">🔗 Seporos</button>
+                            <button data-type="setali">🔧 Setali/Serantai</button>
                             <button data-type="bersinggungan">⛓️ Bersinggungan</button>
-                            <button data-type="tali">🔧 Tali/Rantai</button>
                         </div>
 
                         <div class="control-group">
-                            <label>R<sub>1</sub> (Jari-jari roda 1) <span id="rodaR1Label">2.0 m</span></label>
+                            <label>R<sub>A</sub> (Jari-jari roda A) <span id="rodaR1Label">2.0 m</span></label>
                             <input type="range" id="rodaR1Slider" min="0.8" max="4" step="0.1" value="2.0" />
                         </div>
                         <div class="control-group">
-                            <label>R<sub>2</sub> (Jari-jari roda 2) <span id="rodaR2Label">1.2 m</span></label>
+                            <label>R<sub>B</sub> (Jari-jari roda B) <span id="rodaR2Label">1.2 m</span></label>
                             <input type="range" id="rodaR2Slider" min="0.8" max="4" step="0.1" value="1.2" />
                         </div>
                         <div class="control-group">
-                            <label>ω<sub>1</sub> (Kecepatan sudut roda 1) <span id="rodaOmega1Label">2.0 rad/s</span></label>
+                            <label>ω<sub>A</sub> (Kecepatan sudut roda A) <span id="rodaOmega1Label">2.0 rad/s</span></label>
                             <input type="range" id="rodaOmega1Slider" min="0.5" max="5" step="0.1" value="2.0" />
                         </div>
 
                         <div class="roda-stats">
                             <div class="stat">
                                 <div class="val gold" id="rodaOmega2">0.0</div>
-                                <div class="lbl">ω₂ (rad/s)</div>
+                                <div class="lbl">ω<sub>B</sub> (rad/s)</div>
                             </div>
                             <div class="stat">
                                 <div class="val green" id="rodaV1">0.0</div>
-                                <div class="lbl">v₁ (m/s)</div>
+                                <div class="lbl">v<sub>A</sub> (m/s)</div>
                             </div>
                             <div class="stat">
                                 <div class="val blue" id="rodaV2">0.0</div>
-                                <div class="lbl">v₂ (m/s)</div>
+                                <div class="lbl">v<sub>B</sub> (m/s)</div>
                             </div>
                             <div class="stat">
                                 <div class="val orange" id="rodaRatio">1.00</div>
-                                <div class="lbl">ω₁/ω₂ = R₂/R₁</div>
+                                <div class="lbl">ω<sub>A</sub>/ω<sub>B</sub></div>
                             </div>
                         </div>
 
                         <div class="roda-info" id="rodaInfo">
-                            💡 <span class="highlight">Seporos</span>: ω₁ = ω₂ = <span id="rodaInfoOmega">2.0</span> rad/s
+                            💡 <span class="highlight">Seporos</span>: <span class="rumus">ω<sub>A</sub> = ω<sub>B</sub></span>
                             <br />
-                            v₁ = <span id="rodaInfoV1">4.0</span> m/s, v₂ = <span id="rodaInfoV2">2.4</span> m/s
+                            ω<sub>A</sub> = <span id="rodaInfoOmega1">2.0</span> rad/s, ω<sub>B</sub> = <span id="rodaInfoOmega2">2.0</span> rad/s
+                            <br />
+                            v<sub>A</sub> = <span id="rodaInfoV1">4.0</span> m/s, v<sub>B</sub> = <span id="rodaInfoV2">2.4</span> m/s
                             <br />
                             <span class="arrow">↻</span> Arah putaran: <strong id="rodaInfoArah">sama</strong>
                         </div>
@@ -1201,7 +1227,7 @@
                         </div>
                     </div>
 
-                    <!-- Soal 2: Hubungan Roda -->
+                    <!-- Soal 2: Hubungan Roda Setali -->
                     <div class="soal-card">
                         <div class="soal-header">
                             <div class="soal-num">📝 Soal 2 (L3 - Hubungan Roda)</div>
@@ -1211,7 +1237,7 @@
                             Dua roda A dan B dihubungkan <span class="highlight">rantai</span>. R<sub>A</sub> = 20 cm, R<sub>B</sub> = 10 cm.
                             Jika ω<sub>A</sub> = 5 rad/s, <span class="highlight">ω<sub>B</sub> = ?</span>
                             <br /><br />
-                            <span style="color:#6a8aaa; font-size:0.9rem;">(Hubungan tali: v<sub>A</sub> = v<sub>B</sub>)</span>
+                            <span style="color:#6a8aaa; font-size:0.9rem;">(Hubungan setali: v<sub>A</sub> = v<sub>B</sub>)</span>
                         </div>
                         <button class="btn-soal" data-target="jawab2">Lihat Jawaban</button>
                         <div class="soal-answer" id="jawab2">
@@ -1301,7 +1327,7 @@
     <script>
         // ================================================================
         //  GERAK MELINGKAR – MEDIA INTERAKTIF LENGKAP
-        //  Fitur: Materi, Simulasi GM, Simulasi Roda (diperbaiki), Soal L3, Kuis, Game
+        //  Fitur: Materi, Simulasi GM, Simulasi Roda (BENAR), Soal L3, Kuis, Game
         // ================================================================
 
         // ----- NAVIGASI TAB -----
@@ -1555,7 +1581,7 @@
         updateSimStats();
 
         // ================================================================
-        //  SIMULASI HUBUNGAN RODA-RODA (DIPERBAIKI)
+        //  SIMULASI HUBUNGAN RODA-RODA (BENAR SESUAI GAMBAR)
         // ================================================================
 
         const rodaCanvas = document.getElementById('rodaCanvas');
@@ -1571,7 +1597,8 @@
         const rodaV1 = document.getElementById('rodaV1');
         const rodaV2 = document.getElementById('rodaV2');
         const rodaRatio = document.getElementById('rodaRatio');
-        const rodaInfoOmega = document.getElementById('rodaInfoOmega');
+        const rodaInfoOmega1 = document.getElementById('rodaInfoOmega1');
+        const rodaInfoOmega2 = document.getElementById('rodaInfoOmega2');
         const rodaInfoV1 = document.getElementById('rodaInfoV1');
         const rodaInfoV2 = document.getElementById('rodaInfoV2');
         const rodaInfoArah = document.getElementById('rodaInfoArah');
@@ -1605,24 +1632,28 @@
             let x1, y1, x2, y2;
             let arah1 = 1,
                 arah2 = 1;
+            let labelType = '';
+            let rumusText = '';
 
             if (rodaState.type === 'seporos') {
-                // Seporos: dua roda di poros yang sama, arah sama
+                // SEPOROS: poros sama, ω sama, arah sama
                 x1 = cx - 70;
                 y1 = cy;
                 x2 = cx + 70;
                 y2 = cy;
                 arah1 = 1;
                 arah2 = 1;
+                labelType = 'SEPOROS';
+                rumusText = 'ω_A = ω_B';
 
                 ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
                 ctxRoda.font = '12px sans-serif';
                 ctxRoda.textAlign = 'center';
-                ctxRoda.fillText('🔗 SEPOROS / SEPUSAT', cx, 28);
-                ctxRoda.fillText('ω₁ = ω₂', cx, 48);
+                ctxRoda.fillText('🔗 ' + labelType, cx, 28);
+                ctxRoda.fillText(rumusText, cx, 48);
 
                 // Garis poros
-                ctxRoda.strokeStyle = 'rgba(106,184,232,0.1)';
+                ctxRoda.strokeStyle = 'rgba(106,184,232,0.15)';
                 ctxRoda.lineWidth = 2;
                 ctxRoda.setLineDash([4, 6]);
                 ctxRoda.beginPath();
@@ -1634,39 +1665,8 @@
                 ctxRoda.font = '8px sans-serif';
                 ctxRoda.fillText('poros sama', (x1 + x2) / 2, y1 + 4);
 
-            } else if (rodaState.type === 'bersinggungan') {
-                // Bersinggungan: dua roda bersentuhan, arah berlawanan
-                const totalR = R1_px + R2_px;
-                x1 = cx - totalR / 2 + R1_px;
-                y1 = cy;
-                x2 = cx + totalR / 2 - R2_px;
-                y2 = cy;
-                arah1 = 1;
-                arah2 = -1;
-
-                ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
-                ctxRoda.font = '12px sans-serif';
-                ctxRoda.textAlign = 'center';
-                ctxRoda.fillText('⛓️ BERSINGGUNGAN', cx, 28);
-                ctxRoda.fillText('v₁ = v₂  |  ω₁R₁ = ω₂R₂', cx, 48);
-
-                // Titik kontak
-                ctxRoda.beginPath();
-                ctxRoda.arc((x1 + x2) / 2, cy, 5, 0, Math.PI * 2);
-                ctxRoda.fillStyle = 'rgba(255,215,0,0.6)';
-                ctxRoda.fill();
-                ctxRoda.fillStyle = 'rgba(255,215,0,0.2)';
-                ctxRoda.font = '8px sans-serif';
-                ctxRoda.fillText('titik kontak', (x1 + x2) / 2, cy + 20);
-
-                // Arah putaran berlawanan
-                ctxRoda.fillStyle = 'rgba(255,200,100,0.15)';
-                ctxRoda.font = '14px sans-serif';
-                ctxRoda.fillText('↻', x1 - R1_px - 30, cy);
-                ctxRoda.fillText('↺', x2 + R2_px + 30, cy);
-
-            } else { // tali
-                // Setali: dua roda dihubungkan tali/rantai, arah sama
+            } else if (rodaState.type === 'setali') {
+                // SETALI: v sama, arah sama
                 const totalR = R1_px + R2_px + 50;
                 x1 = cx - totalR / 2 + R1_px;
                 y1 = cy;
@@ -1674,14 +1674,16 @@
                 y2 = cy;
                 arah1 = 1;
                 arah2 = 1;
+                labelType = 'SETALI / SERANTAI';
+                rumusText = 'v_A = v_B  →  ω_A·R_A = ω_B·R_B';
 
                 ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
                 ctxRoda.font = '12px sans-serif';
                 ctxRoda.textAlign = 'center';
-                ctxRoda.fillText('🔧 DIHUBUNGKAN TALI/RANTAI', cx, 28);
-                ctxRoda.fillText('v₁ = v₂  |  ω₁R₁ = ω₂R₂', cx, 48);
+                ctxRoda.fillText('🔧 ' + labelType, cx, 28);
+                ctxRoda.fillText(rumusText, cx, 48);
 
-                // Gambar tali/rantai
+                // Gambar rantai
                 ctxRoda.strokeStyle = 'rgba(200,200,200,0.12)';
                 ctxRoda.lineWidth = 2;
                 ctxRoda.setLineDash([6, 4]);
@@ -1700,26 +1702,59 @@
                 ctxRoda.font = '14px sans-serif';
                 ctxRoda.fillText('↻', x1 - R1_px - 30, cy);
                 ctxRoda.fillText('↻', x2 + R2_px + 30, cy);
+
+            } else { // bersinggungan
+                // BERSINGGUNGAN: v sama, arah berlawanan
+                const totalR = R1_px + R2_px;
+                x1 = cx - totalR / 2 + R1_px;
+                y1 = cy;
+                x2 = cx + totalR / 2 - R2_px;
+                y2 = cy;
+                arah1 = 1;
+                arah2 = -1;
+                labelType = 'BERSINGGUNGAN';
+                rumusText = 'v_A = v_B  →  ω_A·R_A = ω_B·R_B';
+
+                ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
+                ctxRoda.font = '12px sans-serif';
+                ctxRoda.textAlign = 'center';
+                ctxRoda.fillText('⛓️ ' + labelType, cx, 28);
+                ctxRoda.fillText(rumusText, cx, 48);
+
+                // Titik kontak
+                ctxRoda.beginPath();
+                ctxRoda.arc((x1 + x2) / 2, cy, 5, 0, Math.PI * 2);
+                ctxRoda.fillStyle = 'rgba(255,215,0,0.6)';
+                ctxRoda.fill();
+                ctxRoda.fillStyle = 'rgba(255,215,0,0.2)';
+                ctxRoda.font = '8px sans-serif';
+                ctxRoda.fillText('titik kontak', (x1 + x2) / 2, cy + 20);
+
+                // Arah putaran berlawanan
+                ctxRoda.fillStyle = 'rgba(255,200,100,0.15)';
+                ctxRoda.font = '14px sans-serif';
+                ctxRoda.fillText('↻', x1 - R1_px - 30, cy);
+                ctxRoda.fillText('↺', x2 + R2_px + 30, cy);
             }
 
-            // Gambar roda 1
-            drawRoda(ctxRoda, x1, y1, R1_px, rodaState.angle1 * arah1, '#3a8ab5', 'R₁', rodaState.R1.toFixed(1));
+            // Gambar roda A
+            drawRoda(ctxRoda, x1, y1, R1_px, rodaState.angle1 * arah1, '#3a8ab5', 'A', rodaState.R1.toFixed(1));
 
-            // Gambar roda 2
-            drawRoda(ctxRoda, x2, y2, R2_px, rodaState.angle2 * arah2, '#f5a623', 'R₂', rodaState.R2.toFixed(1));
+            // Gambar roda B
+            drawRoda(ctxRoda, x2, y2, R2_px, rodaState.angle2 * arah2, '#f5a623', 'B', rodaState.R2.toFixed(1));
 
             // Label kecepatan sudut
             ctxRoda.fillStyle = 'rgba(255,255,255,0.08)';
             ctxRoda.font = '9px monospace';
-            ctxRoda.fillText(`ω₁ = ${rodaState.omega1.toFixed(1)} rad/s`, x1, y1 - R1_px - 16);
+            ctxRoda.fillText(`ω_A = ${rodaState.omega1.toFixed(1)} rad/s`, x1, y1 - R1_px - 16);
             const omega2 = calculateOmega2();
-            ctxRoda.fillText(`ω₂ = ${omega2.toFixed(1)} rad/s`, x2, y2 - R2_px - 16);
+            ctxRoda.fillText(`ω_B = ${omega2.toFixed(1)} rad/s`, x2, y2 - R2_px - 16);
 
             // Update angle
             if (rodaState.running) {
                 rodaState.angle1 += rodaState.omega1 * 0.02;
                 const omega2_calc = calculateOmega2();
-                rodaState.angle2 += omega2_calc * 0.02 * arah2 / arah1;
+                rodaState.angle2 += omega2_calc * 0.02 * (arah2 / arah1);
             }
         }
 
@@ -1765,7 +1800,7 @@
             ctx.fillStyle = color;
             ctx.font = 'bold 11px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText(label, x, y + 4);
+            ctx.fillText('R' + label, x, y + 4);
             ctx.fillStyle = 'rgba(255,255,255,0.2)';
             ctx.font = '8px sans-serif';
             ctx.fillText(`${labelText}m`, x, y + 20);
@@ -1795,9 +1830,9 @@
             const omega1 = rodaState.omega1;
 
             if (rodaState.type === 'seporos') {
-                return omega1;
-            } else { // bersinggungan atau tali
-                return omega1 * R1 / R2;
+                return omega1; // ω sama
+            } else { // setali atau bersinggungan
+                return omega1 * R1 / R2; // v sama → ω₁R₁ = ω₂R₂
             }
         }
 
@@ -1811,49 +1846,54 @@
             rodaV2.textContent = v2.toFixed(2);
             rodaRatio.textContent = (rodaState.omega1 / omega2).toFixed(2);
 
-            rodaInfoOmega.textContent = omega2.toFixed(2);
+            rodaInfoOmega1.textContent = rodaState.omega1.toFixed(2);
+            rodaInfoOmega2.textContent = omega2.toFixed(2);
             rodaInfoV1.textContent = v1.toFixed(2);
             rodaInfoV2.textContent = v2.toFixed(2);
 
             // Tentukan arah putaran
             let arahText = '';
             let arahEmoji = '';
+            let typeText = '';
+            let rumusText = '';
+
             if (rodaState.type === 'seporos') {
+                typeText = 'Seporos';
+                rumusText = 'ω_A = ω_B';
                 arahText = 'sama';
                 arahEmoji = '↻';
-            } else if (rodaState.type === 'bersinggungan') {
+            } else if (rodaState.type === 'setali') {
+                typeText = 'Setali / Serantai';
+                rumusText = 'v_A = v_B  →  ω_A·R_A = ω_B·R_B';
+                arahText = 'sama';
+                arahEmoji = '↻';
+            } else {
+                typeText = 'Bersinggungan';
+                rumusText = 'v_A = v_B  →  ω_A·R_A = ω_B·R_B';
                 arahText = 'berlawanan';
                 arahEmoji = '↻↺';
-            } else {
-                arahText = 'sama';
-                arahEmoji = '↻';
             }
             rodaInfoArah.textContent = arahText;
-
-            let typeText = '';
-            let relationText = '';
-            if (rodaState.type === 'seporos') {
-                typeText = 'Seporos / Sepusat';
-                relationText = 'ω₁ = ω₂';
-            } else if (rodaState.type === 'bersinggungan') {
-                typeText = 'Bersinggungan';
-                relationText = 'v₁ = v₂  →  ω₁R₁ = ω₂R₂';
-            } else {
-                typeText = 'Tali / Rantai';
-                relationText = 'v₁ = v₂  →  ω₁R₁ = ω₂R₂';
-            }
 
             const check1 = (rodaState.omega1 * rodaState.R1).toFixed(2);
             const check2 = (omega2 * rodaState.R2).toFixed(2);
 
+            let checkDisplay = '';
+            if (rodaState.type === 'seporos') {
+                checkDisplay = `ω_A = ${rodaState.omega1.toFixed(2)} rad/s, ω_B = ${omega2.toFixed(2)} rad/s`;
+            } else {
+                checkDisplay =
+                    `ω_A·R_A = ${check1} = ω_B·R_B = ${check2}`;
+            }
+
             rodaInfo.innerHTML = `
-                💡 <span class="highlight">${typeText}</span>: ${relationText}
+                💡 <span class="highlight">${typeText}</span>: <span class="rumus">${rumusText}</span>
                 <br />
-                ω₁ = ${rodaState.omega1.toFixed(1)} rad/s &nbsp;|&nbsp; ω₂ = ${omega2.toFixed(2)} rad/s
+                ω_A = ${rodaState.omega1.toFixed(1)} rad/s &nbsp;|&nbsp; ω_B = ${omega2.toFixed(2)} rad/s
                 <br />
-                v₁ = ${v1.toFixed(2)} m/s &nbsp;|&nbsp; v₂ = ${v2.toFixed(2)} m/s
+                v_A = ${v1.toFixed(2)} m/s &nbsp;|&nbsp; v_B = ${v2.toFixed(2)} m/s
                 <br />
-                <span style="color:#f5c542;">ω₁·R₁ = ${check1}</span> = <span style="color:#f5c542;">ω₂·R₂ = ${check2}</span>
+                <span style="color:#f5c542;">${checkDisplay}</span>
                 <br />
                 <span class="arrow">${arahEmoji}</span> Arah putaran: <strong style="color:${rodaState.type === 'bersinggungan' ? '#e87a3a' : '#5ac87a'};">${arahText}</strong>
             `;
@@ -1935,10 +1975,10 @@
             correct: 1,
             explanation: 'Percepatan sentripetal selalu menuju pusat lingkaran.'
         }, {
-            question: 'Dua roda dihubungkan rantai, R₁=2R₂, maka ω₁:ω₂ = ...',
+            question: 'Dua roda dihubungkan rantai (setali), R_A=2R_B, maka ω_A:ω_B = ...',
             options: ['1:1', '1:2', '2:1', '4:1'],
             correct: 1,
-            explanation: 'v₁=v₂ → ω₁·R₁=ω₂·R₂ → ω₁·2R=ω₂·R → ω₁:ω₂=1:2'
+            explanation: 'v_A=v_B → ω_A·R_A=ω_B·R_B → ω_A·2R=ω_B·R → ω_A:ω_B=1:2'
         }, {
             question: 'Jika R diperbesar 2x, ω tetap, aₛ menjadi...',
             options: ['2x lebih besar', '4x lebih besar', 'Tetap', '½x'],
@@ -2306,8 +2346,8 @@
         // ================================================================
 
         console.log('🔄 Gerak Melingkar Interaktif siap!');
-        console.log('📚 Fitur: Materi, Simulasi GM, Simulasi Roda (diperbaiki), Soal L3, Kuis, Game');
-        console.log('⚙️ Simulasi Roda: seporos (ω sama), bersinggungan (v sama, arah berlawanan), tali (v sama, arah sama)');
+        console.log('📚 Fitur: Materi, Simulasi GM, Simulasi Roda (BENAR), Soal L3, Kuis, Game');
+        console.log('⚙️ Simulasi Roda: seporos (ω sama), setali (v sama, arah sama), bersinggungan (v sama, arah berlawanan)');
 
         document.querySelector('[data-tab="materi"]').click();
     </script>
