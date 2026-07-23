@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🔄 Gerak Melingkar - Media Interaktif</title>
+    <style>
+        /* ================================================================
+           STYLE UTAMA – GERAK MELINGKAR INTERAKTIF
+           ================================================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0a0f1a;
+            min-height: 100vh;
+            padding: 16px;
+            background-image:
+                radial-gradient(ellipse at 30% 40%, #142a4a 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, #1a1a3a 0%, transparent 50%),
+                linear-gradient(180deg, #0a0f1a 0%, #141c2e 100%);
+        }
+
+        .app-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .app-container {
+            background: linear-gradient(145deg, #111b2e, #1a2844);
+            border-radius: 28px;
+            padding: 24px 28px 32px;
+            box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ----- HEADER ----- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6ab8e8, #3a8ab5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header h1 .emoji {
+            -webkit-text-fill-color: initial;
+        }
+        .header .badge {
+            background: rgba(106, 184, 232, 0.15);
+            color: #6ab8e8;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(106, 184, 232, 0.15);
+            -webkit-text-fill-color: #6ab8e8;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 4px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .nav-tabs button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+            color: #8aaac0;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .nav-tabs button:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-tabs button.active {
+            background: rgba(106, 184, 232, 0.15);
+            color: #6ab8e8;
+            box-shadow: 0 0 20px rgba(106, 184, 232, 0.05);
+        }
+
+        /* ----- KONTEN UTAMA ----- */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================================================================
+           TAB 1: MATERI
+           ================================================================ */
+
+        .materi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 860px) {
+            .materi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .materi-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .materi-card h3 {
+            color: #6ab8e8;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .materi-card p,
+        .materi-card li {
+            color: #b0c8e0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .materi-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .materi-card ul li {
+            padding: 4px 0 4px 24px;
+            position: relative;
+        }
+        .materi-card ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #6ab8e8;
+        }
+        .materi-card .formula-box {
+            background: rgba(106, 184, 232, 0.06);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 12px 0;
+            text-align: center;
+            border-left: 3px solid #6ab8e8;
+        }
+        .materi-card .formula-box .formula {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #d0e8f5;
+            font-family: 'Cambria', 'Times New Roman', serif;
+            font-style: italic;
+        }
+        .materi-card .formula-box .desc {
+            font-size: 0.8rem;
+            color: #8aaac0;
+            margin-top: 4px;
+        }
+
+        .highlight-box {
+            background: rgba(245, 166, 35, 0.06);
+            border-radius: 12px;
+            padding: 14px 18px;
+            border-left: 3px solid #f5a623;
+            margin: 10px 0;
+        }
+        .highlight-box .label {
+            color: #f5a623;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .highlight-box p {
+            color: #d0c8a0;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ================================================================
+           TAB 2: SIMULASI
+           ================================================================ */
+
+        .sim-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 860px) {
+            .sim-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-canvas-wrap {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 20px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .sim-canvas-wrap canvas {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            border-radius: 14px;
+            background: #0a1626;
+            display: block;
+        }
+
+        .sim-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .sim-controls .control-group {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            padding: 14px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .sim-controls .control-group label {
+            color: #8aaac0;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .sim-controls .control-group label span {
+            color: #d0e8f5;
+            font-weight: 700;
+        }
+        .sim-controls input[type="range"] {
+            width: 100%;
+            height: 4px;
+            -webkit-appearance: none;
+            background: linear-gradient(90deg, #1a3a5a, #4a8ab5);
+            border-radius: 10px;
+            outline: none;
+            margin-top: 6px;
+        }
+        .sim-controls input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #6ab8e8, #2a7aaa);
+            border-radius: 50%;
+            border: 2px solid #b0d8f0;
+            box-shadow: 0 0 20px rgba(74, 138, 181, 0.3);
+            cursor: pointer;
+        }
+
+        .sim-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+        .sim-stats .stat {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+        .sim-stats .stat .val {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #d0e8f5;
+        }
+        .sim-stats .stat .lbl {
+            font-size: 0.6rem;
+            color: #6a8aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .sim-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-sim {
+            padding: 10px 28px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            justify-content: center;
+        }
+        .btn-sim:active {
+            transform: scale(0.95);
+        }
+        .btn-sim.play {
+            background: linear-gradient(135deg, #2a8a5a, #1a6a3a);
+            color: white;
+            box-shadow: 0 3px 0 #0f3a22;
+        }
+        .btn-sim.pause {
+            background: linear-gradient(135deg, #d4871a, #a85a10);
+            color: white;
+            box-shadow: 0 3px 0 #6a3a08;
+        }
+        .btn-sim.reset {
+            background: rgba(255, 255, 255, 0.06);
+            color: #b0c8e0;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .btn-sim.reset:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* ================================================================
+           TAB 3: CONTOH SOAL
+           ================================================================ */
+
+        .soal-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .soal-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .soal-card .soal-num {
+            color: #6ab8e8;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        .soal-card .soal-text {
+            color: #d0e8f5;
+            font-size: 1rem;
+            margin: 8px 0 12px;
+            line-height: 1.7;
+        }
+        .soal-card .soal-text .highlight {
+            color: #f5c542;
+        }
+        .soal-card .soal-answer {
+            background: rgba(106, 184, 232, 0.06);
+            border-radius: 12px;
+            padding: 12px 16px;
+            border-left: 3px solid #6ab8e8;
+            display: none;
+        }
+        .soal-card .soal-answer.show {
+            display: block;
+        }
+        .soal-card .soal-answer .label {
+            color: #6ab8e8;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .soal-card .soal-answer p {
+            color: #b0c8e0;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+        .btn-soal {
+            padding: 6px 20px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.1s;
+            background: rgba(106, 184, 232, 0.1);
+            color: #6ab8e8;
+            border: 1px solid rgba(106, 184, 232, 0.1);
+            margin-top: 8px;
+        }
+        .btn-soal:hover {
+            background: rgba(106, 184, 232, 0.2);
+        }
+        .btn-soal.showing {
+            background: rgba(245, 166, 35, 0.1);
+            color: #f5a623;
+            border-color: rgba(245, 166, 35, 0.15);
+        }
+
+        /* ================================================================
+           TAB 4: KUIS
+           ================================================================ */
+
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-progress {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .quiz-progress .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.3s;
+        }
+        .quiz-progress .dot.done {
+            background: #2a8a5a;
+            border-color: #2a8a5a;
+        }
+        .quiz-progress .dot.wrong {
+            background: #a1342b;
+            border-color: #a1342b;
+        }
+        .quiz-progress .dot.active {
+            background: rgba(106, 184, 232, 0.3);
+            border-color: #6ab8e8;
+            box-shadow: 0 0 20px rgba(106, 184, 232, 0.15);
+            transform: scale(1.2);
+        }
+
+        .quiz-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 24px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: center;
+        }
+        .quiz-card .quiz-num {
+            color: #6a8aaa;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .quiz-card .quiz-question {
+            color: #d0e8f5;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 12px 0 20px;
+            line-height: 1.6;
+        }
+        .quiz-card .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        @media (max-width: 500px) {
+            .quiz-card .quiz-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        .quiz-card .quiz-options button {
+            padding: 14px 18px;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            color: #b0c8e0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .quiz-card .quiz-options button:hover {
+            border-color: rgba(106, 184, 232, 0.2);
+            background: rgba(106, 184, 232, 0.05);
+        }
+        .quiz-card .quiz-options button.selected {
+            border-color: #6ab8e8;
+            background: rgba(106, 184, 232, 0.1);
+        }
+        .quiz-card .quiz-options button.correct {
+            border-color: #2a8a5a;
+            background: rgba(42, 138, 90, 0.15);
+            color: #5ac87a;
+        }
+        .quiz-card .quiz-options button.wrong {
+            border-color: #a1342b;
+            background: rgba(161, 52, 43, 0.15);
+            color: #e87a6a;
+        }
+
+        .quiz-feedback {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0c8e0;
+            font-size: 0.95rem;
+            gap: 8px;
+        }
+        .quiz-feedback .icon {
+            font-size: 1.4rem;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 20px;
+        }
+        .quiz-result .score-big {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5c542, #f5a623);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .quiz-result .label {
+            color: #8aaac0;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+        .quiz-result .stars {
+            font-size: 2.5rem;
+            margin: 12px 0;
+        }
+
+        /* ================================================================
+           TAB 5: GAME
+           ================================================================ */
+
+        .game-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 860px) {
+            .game-area {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .game-canvas-wrap {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 20px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .game-canvas-wrap canvas {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            border-radius: 14px;
+            background: #0a1626;
+            display: block;
+            cursor: pointer;
+        }
+
+        .game-side {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .game-side .game-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+        .game-side .game-stats .stat {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+        }
+        .game-side .game-stats .stat .val {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f5c542;
+        }
+        .game-side .game-stats .stat .lbl {
+            font-size: 0.6rem;
+            color: #6a8aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .game-side .game-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .game-side .game-controls .btn-game {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.1s;
+            flex: 1;
+            min-width: 100px;
+        }
+        .game-side .game-controls .btn-game:active {
+            transform: scale(0.95);
+        }
+        .btn-game.play {
+            background: linear-gradient(135deg, #2a8a5a, #1a6a3a);
+            color: white;
+            box-shadow: 0 3px 0 #0f3a22;
+        }
+        .btn-game.reset {
+            background: rgba(255, 255, 255, 0.06);
+            color: #b0c8e0;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .btn-game.difficulty {
+            background: rgba(245, 166, 35, 0.06);
+            color: #f5a623;
+            border: 1px solid rgba(245, 166, 35, 0.1);
+        }
+
+        .game-instruction {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #8aaac0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            border-left: 3px solid #6ab8e8;
+        }
+
+        /* ================================================================
+           RESPONSIF
+           ================================================================ */
+
+        @media (max-width: 600px) {
+            .app-container {
+                padding: 14px;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            .nav-tabs button {
+                padding: 6px 12px;
+                font-size: 0.65rem;
+            }
+            .materi-card {
+                padding: 14px 16px;
+            }
+            .quiz-card .quiz-options {
+                grid-template-columns: 1fr;
+            }
+            .sim-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .game-side .game-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <div class="app-container">
+
+            <!-- ===== HEADER ===== -->
+            <div class="header">
+                <h1>
+                    <span class="emoji">🔄</span> Gerak Melingkar
+                    <span class="badge">Interaktif</span>
+                </h1>
+                <div class="nav-tabs" id="navTabs">
+                    <button class="active" data-tab="materi">📖 Materi</button>
+                    <button data-tab="simulasi">🎮 Simulasi</button>
+                    <button data-tab="soal">📝 Contoh Soal</button>
+                    <button data-tab="kuis">🧠 Kuis</button>
+                    <button data-tab="game">🏆 Game</button>
+                </div>
+            </div>
+
+            <!-- ============================================================
+            TAB 1: MATERI
+            ============================================================ -->
+            <div class="tab-content active" id="tab-materi">
+                <div class="materi-grid">
+
+                    <!-- Konsep Dasar -->
+                    <div class="materi-card">
+                        <h3>📐 Konsep Dasar</h3>
+                        <p><strong>Gerak Melingkar</strong> adalah gerak benda yang lintasannya berbentuk lingkaran.</p>
+                        <br />
+                        <ul>
+                            <li><strong>Periode (T)</strong> : waktu untuk satu putaran penuh (sekon)</li>
+                            <li><strong>Frekuensi (f)</strong> : jumlah putaran per detik (Hz), f = 1/T</li>
+                            <li><strong>Jari-jari (R)</strong> : jarak dari pusat ke benda (meter)</li>
+                        </ul>
+                        <div class="highlight-box" style="margin-top:12px;">
+                            <div class="label">💡 Kunci</div>
+                            <p>Pada GM, besar kecepatan (kelajuan) bisa tetap, tetapi <strong>arahnya selalu berubah</strong> karena ada percepatan sentripetal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Besaran -->
+                    <div class="materi-card">
+                        <h3>📏 Besaran-Besaran</h3>
+                        <div class="formula-box">
+                            <div class="formula">ω = 2πf = 2π/T</div>
+                            <div class="desc">Kecepatan sudut (rad/s)</div>
+                        </div>
+                        <div class="formula-box">
+                            <div class="formula">v = ω · R = 2πR/T</div>
+                            <div class="desc">Kecepatan linear (m/s)</div>
+                        </div>
+                        <div class="formula-box">
+                            <div class="formula">a<sub>s</sub> = v²/R = ω² · R</div>
+                            <div class="desc">Percepatan sentripetal (m/s²) — menuju pusat</div>
+                        </div>
+                        <div class="highlight-box">
+                            <div class="label">⚠️ Perhatikan</div>
+                            <p>Percepatan sentripetal <strong>tidak mengubah besar kecepatan</strong>, hanya mengubah arahnya.</p>
+                        </div>
+                    </div>
+
+                    <!-- Gaya Sentripetal -->
+                    <div class="materi-card">
+                        <h3>⚡ Gaya Sentripetal</h3>
+                        <p>Gaya yang menyebabkan benda bergerak melingkar adalah <strong>gaya sentripetal</strong> — selalu menuju pusat lingkaran.</p>
+                        <div class="formula-box">
+                            <div class="formula">F<sub>s</sub> = m · a<sub>s</sub> = m · v²/R = m · ω² · R</div>
+                            <div class="desc">Gaya sentripetal (Newton)</div>
+                        </div>
+                        <ul>
+                            <li><strong>Contoh sumber gaya:</strong> tegangan tali, gravitasi, gesekan, gaya listrik/magnet.</li>
+                            <li>Jika gaya sentripetal hilang, benda akan bergerak <strong>lurus</strong> (hukum I Newton).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Jenis Gerak Melingkar -->
+                    <div class="materi-card">
+                        <h3>🔄 Jenis Gerak Melingkar</h3>
+                        <ul>
+                            <li><strong>GM Beraturan (GMB)</strong> — kecepatan sudut <strong>tetap</strong> (ω = konstan).</li>
+                            <li><strong>GM Berubah Beraturan (GMBB)</strong> — kecepatan sudut <strong>berubah</strong> (ada percepatan sudut).</li>
+                        </ul>
+                        <div class="highlight-box" style="margin-top:12px;">
+                            <div class="label">📌 Hubungan</div>
+                            <p>θ = ω₀·t + ½·α·t² &nbsp; (GMBB)<br />
+                            ω = ω₀ + α·t</p>
+                            <p style="font-size:0.8rem; color:#8aaac0; margin-top:4px;">θ = sudut tempuh (rad), α = percepatan sudut (rad/s²)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================================
+            TAB 2: SIMULASI
+            ============================================================ -->
+            <div class="tab-content" id="tab-simulasi">
+                <div class="sim-layout">
+                    <div class="sim-canvas-wrap">
+                        <canvas id="simCanvas" width="600" height="600"></canvas>
+                    </div>
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Jari-jari (R) <span id="radiusLabel">2.0 m</span></label>
+                            <input type="range" id="radiusSlider" min="0.5" max="4" step="0.1" value="2.0" />
+                        </div>
+                        <div class="control-group">
+                            <label>Kecepatan Sudut (ω) <span id="omegaLabel">2.0 rad/s</span></label>
+                            <input type="range" id="omegaSlider" min="0.5" max="5" step="0.1" value="2.0" />
+                        </div>
+                        <div class="control-group">
+                            <label>Massa (m) <span id="massLabel">1.0 kg</span></label>
+                            <input type="range" id="massSlider" min="0.5" max="3" step="0.1" value="1.0" />
+                        </div>
+
+                        <div class="sim-stats">
+                            <div class="stat">
+                                <div class="val" id="simSpeed">0.0</div>
+                                <div class="lbl">Kecepatan Linear (m/s)</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val" id="simCentripetal">0.0</div>
+                                <div class="lbl">Percepatan Sentripetal (m/s²)</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val" id="simForce">0.0</div>
+                                <div class="lbl">Gaya Sentripetal (N)</div>
+                            </div>
+                        </div>
+
+                        <div class="sim-actions">
+                            <button class="btn-sim play" id="simPlay">▶ Jalankan</button>
+                            <button class="btn-sim pause" id="simPause" style="display:none;">⏸ Jeda</button>
+                            <button class="btn-sim reset" id="simReset">⟲ Reset</button>
+                        </div>
+
+                        <div style="color:#6a8aaa; font-size:0.8rem; text-align:center; border-top:1px solid rgba(255,255,255,0.04); padding-top:12px;">
+                            ⏱ Periode: <span id="simPeriod">3.14</span> s &nbsp;|&nbsp; Frekuensi: <span id="simFreq">0.32</span> Hz
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+            TAB 3: CONTOH SOAL
+            ============================================================ -->
+            <div class="tab-content" id="tab-soal">
+                <div class="soal-container">
+
+                    <!-- Soal 1 -->
+                    <div class="soal-card">
+                        <div class="soal-num">📝 Soal 1</div>
+                        <div class="soal-text">
+                            Sebuah benda bergerak melingkar beraturan dengan jari-jari <span class="highlight">2 m</span> dan periode <span class="highlight">4 s</span>.
+                            Hitunglah kecepatan linear benda tersebut!
+                        </div>
+                        <button class="btn-soal" data-target="jawab1">Lihat Jawaban</button>
+                        <div class="soal-answer" id="jawab1">
+                            <div class="label">✅ Jawaban</div>
+                            <p>
+                                Diketahui: R = 2 m, T = 4 s<br />
+                                v = 2πR/T = 2 × 3,14 × 2 / 4 = <strong>3,14 m/s</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="soal-card">
+                        <div class="soal-num">📝 Soal 2</div>
+                        <div class="soal-text">
+                            Sebuah roda berputar dengan kecepatan sudut <span class="highlight">10 rad/s</span>. Jika jari-jari roda <span class="highlight">0,5 m</span>,
+                            berapa percepatan sentripetal di tepi roda?
+                        </div>
+                        <button class="btn-soal" data-target="jawab2">Lihat Jawaban</button>
+                        <div class="soal-answer" id="jawab2">
+                            <div class="label">✅ Jawaban</div>
+                            <p>
+                                Diketahui: ω = 10 rad/s, R = 0,5 m<br />
+                                a<sub>s</sub> = ω²·R = 10² × 0,5 = <strong>50 m/s²</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="soal-card">
+                        <div class="soal-num">📝 Soal 3</div>
+                        <div class="soal-text">
+                            Sebuah benda bermassa <span class="highlight">2 kg</span> diikat dengan tali dan diputar melingkar beraturan dengan kecepatan <span class="highlight">4 m/s</span>
+                            dan jari-jari <span class="highlight">0,8 m</span>. Berapa tegangan tali?
+                        </div>
+                        <button class="btn-soal" data-target="jawab3">Lihat Jawaban</button>
+                        <div class="soal-answer" id="jawab3">
+                            <div class="label">✅ Jawaban</div>
+                            <p>
+                                Diketahui: m = 2 kg, v = 4 m/s, R = 0,8 m<br />
+                                Tegangan tali = F<sub>s</sub> = m·v²/R = 2 × 4² / 0,8 = <strong>40 N</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="soal-card">
+                        <div class="soal-num">📝 Soal 4 (HOTS)</div>
+                        <div class="soal-text">
+                            Sebuah mobil melaju di tikungan datar dengan jari-jari <span class="highlight">50 m</span>. Koefisien gesekan statis antara ban dan jalan adalah <span class="highlight">0,4</span>.
+                            Berapa kecepatan maksimum mobil agar tidak slip? (g = 10 m/s²)
+                        </div>
+                        <button class="btn-soal" data-target="jawab4">Lihat Jawaban</button>
+                        <div class="soal-answer" id="jawab4">
+                            <div class="label">✅ Jawaban</div>
+                            <p>
+                                Gaya sentripetal berasal dari gesekan: f<sub>s</sub> = μ·m·g = m·v²/R<br />
+                                v = √(μ·g·R) = √(0,4 × 10 × 50) = √200 = <strong>14,14 m/s</strong> ≈ <strong>50,9 km/jam</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================================
+            TAB 4: KUIS
+            ============================================================ -->
+            <div class="tab-content" id="tab-kuis">
+                <div class="quiz-container" id="quizContainer">
+                    <!-- Dinamis oleh JS -->
+                </div>
+            </div>
+
+            <!-- ============================================================
+            TAB 5: GAME
+            ============================================================ -->
+            <div class="tab-content" id="tab-game">
+                <div class="game-area">
+                    <div class="game-canvas-wrap">
+                        <canvas id="gameCanvas" width="600" height="600"></canvas>
+                    </div>
+                    <div class="game-side">
+                        <div class="game-stats">
+                            <div class="stat">
+                                <div class="val" id="gameScore">0</div>
+                                <div class="lbl">⭐ Skor</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val" id="gameLevel">1</div>
+                                <div class="lbl">📈 Level</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val" id="gameCombo">0</div>
+                                <div class="lbl">🔥 Combo</div>
+                            </div>
+                        </div>
+
+                        <div class="game-controls">
+                            <button class="btn-game play" id="gameStart">▶ Mulai</button>
+                            <button class="btn-game reset" id="gameReset">⟲ Reset</button>
+                            <button class="btn-game difficulty" id="gameDifficulty">🎯 Kesulitan</button>
+                        </div>
+
+                        <div class="game-instruction">
+                            🎯 <strong>Cara Main:</strong> Klik bola yang berwarna <strong style="color:#f5c542;">kuning</strong> untuk mendapat skor!
+                            Setiap level, kecepatan dan jumlah bola bertambah. Hindari klik bola merah ❌.
+                            <br /><br />
+                            <span style="color:#6a8aaa;">📊 Konsep: Bola bergerak melingkar dengan kecepatan sudut berbeda. Ini melatih pemahaman tentang frekuensi dan periode!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //  GERAK MELINGKAR – MEDIA INTERAKTIF LENGKAP
+        //  Fitur: Materi, Simulasi, Contoh Soal, Kuis, Game
+        // ================================================================
+
+        // ----- NAVIGASI TAB -----
+        const navBtns = document.querySelectorAll('.nav-tabs button');
+        const contents = {
+            materi: document.getElementById('tab-materi'),
+            simulasi: document.getElementById('tab-simulasi'),
+            soal: document.getElementById('tab-soal'),
+            kuis: document.getElementById('tab-kuis'),
+            game: document.getElementById('tab-game'),
+        };
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                navBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tab = btn.dataset.tab;
+                Object.keys(contents).forEach(key => {
+                    contents[key].classList.toggle('active', key === tab);
+                });
+                // Refresh canvas jika tab simulasi atau game
+                if (tab === 'simulasi') {
+                    drawSimulation();
+                    updateSimStats();
+                }
+                if (tab === 'game') {
+                    drawGame();
+                }
+                if (tab === 'kuis') {
+                    renderQuiz();
+                }
+            });
+        });
+
+        // ================================================================
+        //  SIMULASI GERAK MELINGKAR
+        // ================================================================
+
+        const simCanvas = document.getElementById('simCanvas');
+        const ctxSim = simCanvas.getContext('2d');
+
+        const radiusSlider = document.getElementById('radiusSlider');
+        const omegaSlider = document.getElementById('omegaSlider');
+        const massSlider = document.getElementById('massSlider');
+        const radiusLabel = document.getElementById('radiusLabel');
+        const omegaLabel = document.getElementById('omegaLabel');
+        const massLabel = document.getElementById('massLabel');
+        const simSpeed = document.getElementById('simSpeed');
+        const simCentripetal = document.getElementById('simCentripetal');
+        const simForce = document.getElementById('simForce');
+        const simPeriod = document.getElementById('simPeriod');
+        const simFreq = document.getElementById('simFreq');
+
+        let simState = {
+            angle: 0,
+            running: false,
+            animId: null,
+            R: 2.0,
+            omega: 2.0,
+            m: 1.0,
+        };
+
+        function drawSimulation() {
+            const W = simCanvas.width,
+                H = simCanvas.height;
+            const cx = W / 2,
+                cy = H / 2;
+            const scale = 70;
+            const R_px = simState.R * scale;
+
+            ctxSim.clearRect(0, 0, W, H);
+
+            // Latar
+            ctxSim.fillStyle = '#0a1626';
+            ctxSim.fillRect(0, 0, W, H);
+
+            // Grid lingkaran konsentris
+            for (let r = 0.5; r <= 4; r += 0.5) {
+                ctxSim.beginPath();
+                ctxSim.arc(cx, cy, r * scale, 0, Math.PI * 2);
+                ctxSim.strokeStyle = r === simState.R ? 'rgba(106,184,232,0.15)' : 'rgba(255,255,255,0.03)';
+                ctxSim.lineWidth = r === simState.R ? 1.5 : 0.5;
+                ctxSim.stroke();
+                if (r === simState.R) {
+                    ctxSim.fillStyle = 'rgba(106,184,232,0.05)';
+                    ctxSim.fill();
+                }
+            }
+
+            // Label radius
+            ctxSim.fillStyle = 'rgba(255,255,255,0.15)';
+            ctxSim.font = '10px monospace';
+            ctxSim.textAlign = 'center';
+            ctxSim.fillText(`R = ${simState.R.toFixed(1)} m`, cx + R_px / 2, cy + 14);
+
+            // Titik pusat
+            ctxSim.beginPath();
+            ctxSim.arc(cx, cy, 4, 0, Math.PI * 2);
+            ctxSim.fillStyle = 'rgba(255,255,255,0.15)';
+            ctxSim.fill();
+
+            // Posisi benda
+            const x = cx + R_px * Math.cos(simState.angle);
+            const y = cy + R_px * Math.sin(simState.angle);
+
+            // Jejak (lintasan)
+            ctxSim.beginPath();
+            for (let i = 0; i <= 100; i++) {
+                const a = simState.angle - i * 0.06;
+                const px = cx + R_px * Math.cos(a);
+                const py = cy + R_px * Math.sin(a);
+                if (i === 0) ctxSim.moveTo(px, py);
+                else ctxSim.lineTo(px, py);
+            }
+            ctxSim.strokeStyle = 'rgba(106,184,232,0.15)';
+            ctxSim.lineWidth = 2;
+            ctxSim.stroke();
+
+            // Garis jari-jari
+            ctxSim.beginPath();
+            ctxSim.moveTo(cx, cy);
+            ctxSim.lineTo(x, y);
+            ctxSim.strokeStyle = 'rgba(106,184,232,0.2)';
+            ctxSim.lineWidth = 1;
+            ctxSim.setLineDash([4, 6]);
+            ctxSim.stroke();
+            ctxSim.setLineDash([]);
+
+            // Vektor kecepatan (tangensial)
+            const vx = -R_px * simState.omega * Math.sin(simState.angle);
+            const vy = R_px * simState.omega * Math.cos(simState.angle);
+            const v_len = Math.sqrt(vx * vx + vy * vy);
+            if (v_len > 1) {
+                const scaleV = 30 / v_len;
+                ctxSim.beginPath();
+                ctxSim.moveTo(x, y);
+                ctxSim.lineTo(x + vx * scaleV, y + vy * scaleV);
+                ctxSim.strokeStyle = '#5ac87a';
+                ctxSim.lineWidth = 2.5;
+                ctxSim.stroke();
+                // panah
+                const a_v = Math.atan2(vy, vx);
+                const headLen = 10;
+                ctxSim.beginPath();
+                ctxSim.moveTo(x + vx * scaleV, y + vy * scaleV);
+                ctxSim.lineTo(x + vx * scaleV - headLen * Math.cos(a_v - 0.5), y + vy * scaleV - headLen * Math.sin(a_v -
+                0.5));
+                ctxSim.lineTo(x + vx * scaleV - headLen * Math.cos(a_v + 0.5), y + vy * scaleV - headLen * Math.sin(a_v +
+                0.5));
+                ctxSim.closePath();
+                ctxSim.fillStyle = '#5ac87a';
+                ctxSim.fill();
+                ctxSim.fillStyle = '#5ac87a';
+                ctxSim.font = '11px sans-serif';
+                ctxSim.fillText('v', x + vx * scaleV + 12, y + vy * scaleV - 4);
+            }
+
+            // Vektor percepatan sentripetal (menuju pusat)
+            const as_x = -R_px * simState.omega * simState.omega * Math.cos(simState.angle);
+            const as_y = -R_px * simState.omega * simState.omega * Math.sin(simState.angle);
+            const as_len = Math.sqrt(as_x * as_x + as_y * as_y);
+            if (as_len > 1) {
+                const scaleA = 20 / as_len;
+                ctxSim.beginPath();
+                ctxSim.moveTo(x, y);
+                ctxSim.lineTo(x + as_x * scaleA, y + as_y * scaleA);
+                ctxSim.strokeStyle = '#e87a3a';
+                ctxSim.lineWidth = 2.5;
+                ctxSim.stroke();
+                const a_a = Math.atan2(as_y, as_x);
+                const headLen = 10;
+                ctxSim.beginPath();
+                ctxSim.moveTo(x + as_x * scaleA, y + as_y * scaleA);
+                ctxSim.lineTo(x + as_x * scaleA - headLen * Math.cos(a_a - 0.5), y + as_y * scaleA - headLen * Math.sin(a_a -
+                0.5));
+                ctxSim.lineTo(x + as_x * scaleA - headLen * Math.cos(a_a + 0.5), y + as_y * scaleA - headLen * Math.sin(a_a +
+                0.5));
+                ctxSim.closePath();
+                ctxSim.fillStyle = '#e87a3a';
+                ctxSim.fill();
+                ctxSim.fillStyle = '#e87a3a';
+                ctxSim.font = '11px sans-serif';
+                ctxSim.fillText('aₛ', x + as_x * scaleA - 20, y + as_y * scaleA - 6);
+            }
+
+            // Benda (bola)
+            const grad = ctxSim.createRadialGradient(x - 8, y - 10, 4, x, y, 22);
+            grad.addColorStop(0, '#7ac8f0');
+            grad.addColorStop(0.5, '#3a8ab5');
+            grad.addColorStop(1, '#1a4a6a');
+            ctxSim.shadowColor = 'rgba(106,184,232,0.3)';
+            ctxSim.shadowBlur = 30;
+            ctxSim.beginPath();
+            ctxSim.arc(x, y, 20, 0, Math.PI * 2);
+            ctxSim.fillStyle = grad;
+            ctxSim.fill();
+            ctxSim.shadowBlur = 0;
+            ctxSim.beginPath();
+            ctxSim.arc(x - 6, y - 8, 6, 0, Math.PI * 2);
+            ctxSim.fillStyle = 'rgba(255,255,255,0.3)';
+            ctxSim.fill();
+
+            // Label sudut
+            ctxSim.fillStyle = 'rgba(255,255,255,0.1)';
+            ctxSim.font = '10px monospace';
+            ctxSim.textAlign = 'left';
+            const deg = (simState.angle * 180 / Math.PI) % 360;
+            ctxSim.fillText(`θ = ${deg.toFixed(0)}°`, 14, 26);
+            ctxSim.fillText(`ω = ${simState.omega.toFixed(1)} rad/s`, 14, 44);
+
+            // Status
+            if (simState.running) {
+                ctxSim.fillStyle = 'rgba(90,200,122,0.4)';
+                ctxSim.font = '12px sans-serif';
+                ctxSim.textAlign = 'center';
+                ctxSim.fillText('▶ BERJALAN', W / 2, 28);
+            }
+        }
+
+        function updateSimStats() {
+            const v = simState.R * simState.omega;
+            const as = simState.R * simState.omega * simState.omega;
+            const Fs = simState.m * as;
+            const T = 2 * Math.PI / simState.omega;
+            const f = 1 / T;
+
+            simSpeed.textContent = v.toFixed(2);
+            simCentripetal.textContent = as.toFixed(2);
+            simForce.textContent = Fs.toFixed(2);
+            simPeriod.textContent = T.toFixed(2);
+            simFreq.textContent = f.toFixed(2);
+        }
+
+        function simLoop() {
+            if (simState.running) {
+                simState.angle += simState.omega * 0.02;
+                drawSimulation();
+                updateSimStats();
+                simState.animId = requestAnimationFrame(simLoop);
+            }
+        }
+
+        // Event Simulasi
+        radiusSlider.addEventListener('input', () => {
+            simState.R = parseFloat(radiusSlider.value);
+            radiusLabel.textContent = simState.R.toFixed(1) + ' m';
+            drawSimulation();
+            updateSimStats();
+        });
+        omegaSlider.addEventListener('input', () => {
+            simState.omega = parseFloat(omegaSlider.value);
+            omegaLabel.textContent = simState.omega.toFixed(1) + ' rad/s';
+            drawSimulation();
+            updateSimStats();
+        });
+        massSlider.addEventListener('input', () => {
+            simState.m = parseFloat(massSlider.value);
+            massLabel.textContent = simState.m.toFixed(1) + ' kg';
+            updateSimStats();
+        });
+
+        document.getElementById('simPlay').addEventListener('click', () => {
+            if (!simState.running) {
+                simState.running = true;
+                document.getElementById('simPlay').style.display = 'none';
+                document.getElementById('simPause').style.display = 'inline-flex';
+                simLoop();
+            }
+        });
+        document.getElementById('simPause').addEventListener('click', () => {
+            simState.running = false;
+            if (simState.animId) cancelAnimationFrame(simState.animId);
+            document.getElementById('simPlay').style.display = 'inline-flex';
+            document.getElementById('simPause').style.display = 'none';
+        });
+        document.getElementById('simReset').addEventListener('click', () => {
+            simState.running = false;
+            if (simState.animId) cancelAnimationFrame(simState.animId);
+            simState.angle = 0;
+            document.getElementById('simPlay').style.display = 'inline-flex';
+            document.getElementById('simPause').style.display = 'none';
+            drawSimulation();
+            updateSimStats();
+        });
+
+        // Inisialisasi Simulasi
+        drawSimulation();
+        updateSimStats();
+
+        // ================================================================
+        //  CONTOH SOAL – Toggle Jawaban
+        // ================================================================
+
+        document.querySelectorAll('.btn-soal').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = document.getElementById(btn.dataset.target);
+                if (target.classList.contains('show')) {
+                    target.classList.remove('show');
+                    btn.textContent = 'Lihat Jawaban';
+                    btn.classList.remove('showing');
+                } else {
+                    target.classList.add('show');
+                    btn.textContent = 'Sembunyikan Jawaban';
+                    btn.classList.add('showing');
+                }
+            });
+        });
+
+        // ================================================================
+        //  KUIS INTERAKTIF
+        // ================================================================
+
+        const quizData = [{
+            question: 'Apa yang dimaksud dengan periode dalam gerak melingkar?',
+            options: ['Waktu untuk satu putaran penuh', 'Jumlah putaran per detik', 'Kecepatan sudut', 'Percepatan sentripetal'],
+            correct: 0,
+            explanation: 'Periode (T) adalah waktu yang dibutuhkan benda untuk melakukan satu putaran penuh.',
+        }, {
+            question: 'Rumus kecepatan linear dalam gerak melingkar adalah...',
+            options: ['v = ω/R', 'v = ω·R', 'v = R/ω', 'v = 2πR'],
+            correct: 1,
+            explanation: 'Kecepatan linear v = ω·R, di mana ω adalah kecepatan sudut dan R adalah jari-jari.',
+        }, {
+            question: 'Ke mana arah percepatan sentripetal?',
+            options: ['Menjauhi pusat', 'Menuju pusat', 'Searah kecepatan', 'Berlawanan kecepatan'],
+            correct: 1,
+            explanation: 'Percepatan sentripetal selalu menuju pusat lingkaran, mengubah arah kecepatan.',
+        }, {
+            question: 'Jika kecepatan sudut diperbesar 2 kali, percepatan sentripetal menjadi...',
+            options: ['2 kali lebih besar', '4 kali lebih besar', 'Tetap sama', '½ kali lebih kecil'],
+            correct: 1,
+            explanation: 'aₛ = ω²·R, jadi jika ω diperbesar 2x, aₛ menjadi 4x lebih besar.',
+        }, {
+            question: 'Gaya sentripetal pada gerak melingkar berfungsi untuk...',
+            options: ['Mengubah besar kecepatan', 'Mengubah arah kecepatan', 'Menghentikan benda', 'Memperlambat benda'],
+            correct: 1,
+            explanation: 'Gaya sentripetal mengubah arah kecepatan, bukan besarnya (pada GMB).',
+        }, {
+            question: 'Sebuah benda bermassa 2 kg bergerak melingkar dengan jari-jari 1 m dan kecepatan 4 m/s. Gaya sentripetalnya adalah...',
+            options: ['8 N', '16 N', '32 N', '4 N'],
+            correct: 2,
+            explanation: 'Fₛ = m·v²/R = 2 × 16 / 1 = 32 N',
+        }, {
+            question: 'Pada gerak melingkar beraturan, yang tetap adalah...',
+            options: ['Kecepatan linear', 'Kecepatan sudut', 'Percepatan', 'Gaya sentripetal'],
+            correct: 1,
+            explanation: 'Pada GMB, kecepatan sudut (ω) tetap, sedangkan kecepatan linear arahnya berubah.',
+        }, {
+            question: 'Frekuensi 5 Hz berarti dalam 1 detik terjadi...',
+            options: ['5 putaran', '0,2 putaran', '1 putaran', '10 putaran'],
+            correct: 0,
+            explanation: 'Frekuensi adalah jumlah putaran per detik, jadi 5 Hz = 5 putaran/detik.',
+        }, ];
+
+        let quizIndex = 0;
+        let quizScore = 0;
+        let quizAnswered = false;
+        let quizResults = [];
+
+        function renderQuiz() {
+            const container = document.getElementById('quizContainer');
+
+            if (quizIndex >= quizData.length) {
+                // Hasil
+                const total = quizData.length;
+                const benar = quizResults.filter(r => r).length;
+                const persen = Math.round((benar / total) * 100);
+                let stars = '';
+                if (persen >= 80) stars = '⭐⭐⭐';
+                else if (persen >= 60) stars = '⭐⭐';
+                else if (persen >= 40) stars = '⭐';
+                else stars = '💪';
+
+                container.innerHTML = `
+                    <div class="quiz-result">
+                        <div class="score-big">${benar}/${total}</div>
+                        <div class="label">Jawaban Benar</div>
+                        <div class="stars">${stars}</div>
+                        <div style="color:#8aaac0; font-size:0.9rem;">${persen}% — ${persen >= 70 ? '🎉 Bagus sekali!' : persen >= 40 ? '📚 Terus belajar!' : '💪 Semangat, coba lagi!'}</div>
+                        <button class="btn-sim play" style="margin:16px auto 0; display:inline-flex;" onclick="resetQuiz()">🔄 Ulangi Kuis</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = quizData[quizIndex];
+            const progress = quizData.map((_, i) => {
+                if (i < quizIndex) return `<div class="dot ${quizResults[i] ? 'done' : 'wrong'}"></div>`;
+                if (i === quizIndex) return `<div class="dot active"></div>`;
+                return `<div class="dot"></div>`;
+            }).join('');
+
+            let optionsHtml = q.options.map((opt, i) => `
+                <button data-index="${i}" class="quiz-opt">${String.fromCharCode(65 + i)}. ${opt}</button>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="quiz-progress">${progress}</div>
+                <div class="quiz-card">
+                    <div class="quiz-num">Pertanyaan ${quizIndex + 1} dari ${quizData.length}</div>
+                    <div class="quiz-question">${q.question}</div>
+                    <div class="quiz-options" id="quizOptions">${optionsHtml}</div>
+                    <div class="quiz-feedback" id="quizFeedback">
+                        <span class="icon">💡</span> Pilih jawaban, lalu klik "Jawab"
+                    </div>
+                    <button class="btn-sim play" id="quizAnswerBtn" style="margin-top:12px; display:inline-flex;">✅ Jawab</button>
+                    <button class="btn-sim reset" id="quizNextBtn" style="margin-top:12px; display:none; margin-left:10px;">➡ Selanjutnya</button>
+                </div>
+            `;
+
+            // Event listeners
+            const options = container.querySelectorAll('.quiz-opt');
+            let selected = -1;
+
+            options.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (quizAnswered) return;
+                    options.forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selected = parseInt(btn.dataset.index);
+                });
+            });
+
+            document.getElementById('quizAnswerBtn').addEventListener('click', () => {
+                if (quizAnswered) return;
+                if (selected === -1) {
+                    document.getElementById('quizFeedback').innerHTML =
+                        '<span class="icon">⚠️</span> Pilih salah satu jawaban!';
+                    return;
+                }
+                quizAnswered = true;
+                const correct = q.correct;
+                const isCorrect = selected === correct;
+                quizResults.push(isCorrect);
+                if (isCorrect) quizScore++;
+
+                options.forEach((btn, i) => {
+                    btn.classList.remove('selected');
+                    if (i === correct) btn.classList.add('correct');
+                    if (i === selected && !isCorrect) btn.classList.add('wrong');
+                    btn.style.pointerEvents = 'none';
+                });
+
+                document.getElementById('quizFeedback').innerHTML = `
+                    <span class="icon">${isCorrect ? '✅' : '❌'}</span>
+                    ${isCorrect ? 'Benar! ' : 'Kurang tepat. '}
+                    ${q.explanation}
+                `;
+                document.getElementById('quizAnswerBtn').style.display = 'none';
+                document.getElementById('quizNextBtn').style.display = 'inline-flex';
+            });
+
+            document.getElementById('quizNextBtn').addEventListener('click', () => {
+                quizIndex++;
+                quizAnswered = false;
+                renderQuiz();
+            });
+        }
+
+        function resetQuiz() {
+            quizIndex = 0;
+            quizScore = 0;
+            quizAnswered = false;
+            quizResults = [];
+            renderQuiz();
+        }
+
+        // Inisialisasi Kuis
+        renderQuiz();
+
+        // ================================================================
+        //  GAME – Click the Circular Motion!
+        // ================================================================
+
+        const gameCanvas = document.getElementById('gameCanvas');
+        const ctxGame = gameCanvas.getContext('2d');
+        const gameScore = document.getElementById('gameScore');
+        const gameLevel = document.getElementById('gameLevel');
+        const gameCombo = document.getElementById('gameCombo');
+
+        let game = {
+            running: false,
+            level: 1,
+            score: 0,
+            combo: 0,
+            maxCombo: 0,
+            balls: [],
+            clicked: false,
+            animId: null,
+            difficulty: 1, // 1: normal, 2: hard, 3: extreme
+            spawnTimer: 0,
+            spawnInterval: 2.0,
+        };
+
+        class CircularBall {
+            constructor(level, difficulty) {
+                const R = 100 + Math.random() * 180;
+                const cx = 300 + (Math.random() - 0.5) * 80;
+                const cy = 300 + (Math.random() - 0.5) * 80;
+                const omega = (0.8 + Math.random() * 1.5) * (1 + (level - 1) * 0.15);
+                this.cx = cx;
+                this.cy = cy;
+                this.R = R;
+                this.omega = omega * (0.8 + difficulty * 0.1);
+                this.angle = Math.random() * 2 * Math.PI;
+                this.radius = 16 + Math.random() * 6;
+                this.isTarget = Math.random() < 0.6;
+                this.alive = true;
+                this.hit = false;
+                this.color = this.isTarget ?
+                    `hsl(${45 + Math.random() * 20}, 90%, 55%)` :
+                    `hsl(${0 + Math.random() * 20}, 80%, 50%)`;
+                this.life = 1.0;
+                this.decay = 0.002 + Math.random() * 0.003;
+                this.id = Math.random();
+            }
+
+            update() {
+                this.angle += this.omega * 0.02;
+                this.life -= this.decay;
+                if (this.life <= 0) this.alive = false;
+            }
+
+            getPos() {
+                return {
+                    x: this.cx + this.R * Math.cos(this.angle),
+                    y: this.cy + this.R * Math.sin(this.angle)
+                };
+            }
+
+            draw(ctx) {
+                const pos = this.getPos();
+                const alpha = this.life;
+
+                // Glow
+                const grad = ctx.createRadialGradient(pos.x, pos.y, 2, pos.x, pos.y, this.radius * 2);
+                if (this.isTarget) {
+                    grad.addColorStop(0, `rgba(255,215,0,${0.2 * alpha})`);
+                    grad.addColorStop(1, 'rgba(255,215,0,0)');
+                } else {
+                    grad.addColorStop(0, `rgba(255,50,50,${0.15 * alpha})`);
+                    grad.addColorStop(1, 'rgba(255,50,50,0)');
+                }
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, this.radius * 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Bola
+                const grad2 = ctx.createRadialGradient(pos.x - 4, pos.y - 6, 3, pos.x, pos.y, this.radius);
+                const c = this.color;
+                grad2.addColorStop(0, this.isTarget ? '#ffdd77' : '#ff7777');
+                grad2.addColorStop(0.6, c);
+                grad2.addColorStop(1, this.isTarget ? '#b87a1a' : '#8a2a1a');
+                ctx.shadowColor = this.isTarget ? 'rgba(255,215,0,0.3)' : 'rgba(255,50,50,0.2)';
+                ctx.shadowBlur = 20;
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = grad2;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+
+                // Label
+                ctx.fillStyle = this.isTarget ? 'rgba(255,255,200,0.6)' : 'rgba(255,200,200,0.4)';
+                ctx.font = '8px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(this.isTarget ? '⭐' : '✖', pos.x, pos.y + 3);
+
+                // Lintasan (lingkaran)
+                ctx.globalAlpha = 0.06 * alpha;
+                ctx.beginPath();
+                ctx.arc(this.cx, this.cy, this.R, 0, Math.PI * 2);
+                ctx.strokeStyle = this.isTarget ? '#f5c542' : '#ff4444';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            }
+
+            contains(px, py) {
+                const pos = this.getPos();
+                const dx = px - pos.x;
+                const dy = py - pos.y;
+                return dx * dx + dy * dy < this.radius * this.radius;
+            }
+        }
+
+        function initGame() {
+            game.balls = [];
+            game.score = 0;
+            game.combo = 0;
+            game.maxCombo = 0;
+            game.spawnTimer = 0;
+            game.level = 1;
+            updateGameStats();
+            // Spawn awal
+            for (let i = 0; i < 3 + game.level; i++) {
+                game.balls.push(new CircularBall(game.level, game.difficulty));
+            }
+        }
+
+        function updateGameStats() {
+            gameScore.textContent = game.score;
+            gameLevel.textContent = game.level;
+            gameCombo.textContent = game.combo;
+        }
+
+        function spawnBall() {
+            if (game.balls.length < 10 + game.level * 2) {
+                game.balls.push(new CircularBall(game.level, game.difficulty));
+            }
+        }
+
+        function drawGame() {
+            const W = gameCanvas.width,
+                H = gameCanvas.height;
+            ctxGame.clearRect(0, 0, W, H);
+
+            // Latar
+            const grad = ctxGame.createRadialGradient(300, 300, 50, 300, 300, 400);
+            grad.addColorStop(0, '#1a2a4a');
+            grad.addColorStop(1, '#0a0f1a');
+            ctxGame.fillStyle = grad;
+            ctxGame.fillRect(0, 0, W, H);
+
+            // Grid
+            ctxGame.strokeStyle = 'rgba(255,255,255,0.02)';
+            ctxGame.lineWidth = 0.5;
+            for (let i = 0; i < W; i += 40) {
+                ctxGame.beginPath();
+                ctxGame.moveTo(i, 0);
+                ctxGame.lineTo(i, H);
+                ctxGame.stroke();
+                ctxGame.beginPath();
+                ctxGame.moveTo(0, i);
+                ctxGame.lineTo(W, i);
+                ctxGame.stroke();
+            }
+
+            // Update & draw balls
+            for (let i = game.balls.length - 1; i >= 0; i--) {
+                const b = game.balls[i];
+                b.update();
+                if (!b.alive) {
+                    game.balls.splice(i, 1);
+                    continue;
+                }
+                b.draw(ctxGame);
+            }
+
+            // Info game
+            ctxGame.fillStyle = 'rgba(255,255,255,0.05)';
+            ctxGame.font = '10px monospace';
+            ctxGame.textAlign = 'left';
+            ctxGame.fillText(`Level ${game.level}  |  Bola: ${game.balls.length}  |  Combo: ${game.combo}`, 14, 22);
+
+            if (!game.running) {
+                ctxGame.fillStyle = 'rgba(255,255,255,0.1)';
+                ctxGame.font = 'bold 22px sans-serif';
+                ctxGame.textAlign = 'center';
+                ctxGame.fillText('🎯 Klik "Mulai" untuk bermain', W / 2, H / 2 + 8);
+            }
+        }
+
+        function gameLoop() {
+            if (!game.running) {
+                drawGame();
+                return;
+            }
+
+            // Spawn timer
+            game.spawnTimer += 0.02;
+            const interval = Math.max(0.5, game.spawnInterval - game.level * 0.08);
+            if (game.spawnTimer > interval && game.balls.length < 15 + game.level * 2) {
+                spawnBall();
+                game.spawnTimer = 0;
+            }
+
+            // Cek level up
+            if (game.score > 0 && game.score % 50 === 0 && game.level < 20) {
+                game.level++;
+                game.spawnInterval = Math.max(0.5, game.spawnInterval - 0.1);
+                updateGameStats();
+                // Bonus spawn
+                for (let i = 0; i < 2; i++) spawnBall();
+            }
+
+            drawGame();
+            game.animId = requestAnimationFrame(gameLoop);
+        }
+
+        // Event Game
+        document.getElementById('gameStart').addEventListener('click', () => {
+            if (!game.running) {
+                game.running = true;
+                if (game.balls.length === 0) initGame();
+                document.getElementById('gameStart').textContent = '⏹ Berhenti';
+                gameLoop();
+            } else {
+                game.running = false;
+                if (game.animId) cancelAnimationFrame(game.animId);
+                document.getElementById('gameStart').textContent = '▶ Mulai';
+                drawGame();
+            }
+        });
+
+        document.getElementById('gameReset').addEventListener('click', () => {
+            game.running = false;
+            if (game.animId) cancelAnimationFrame(game.animId);
+            initGame();
+            document.getElementById('gameStart').textContent = '▶ Mulai';
+            drawGame();
+            updateGameStats();
+        });
+
+        document.getElementById('gameDifficulty').addEventListener('click', () => {
+            const levels = ['Normal', 'Sulit', 'Ekstrem'];
+            game.difficulty = (game.difficulty % 3) + 1;
+            document.getElementById('gameDifficulty').textContent = '🎯 ' + levels[game.difficulty - 1];
+            if (!game.running) {
+                initGame();
+                drawGame();
+            }
+        });
+
+        // Klik pada canvas game
+        gameCanvas.addEventListener('click', (e) => {
+            if (!game.running) return;
+            const rect = gameCanvas.getBoundingClientRect();
+            const scaleX = gameCanvas.width / rect.width;
+            const scaleY = gameCanvas.height / rect.height;
+            const mx = (e.clientX - rect.left) * scaleX;
+            const my = (e.clientY - rect.top) * scaleY;
+
+            let hit = false;
+            for (const b of game.balls) {
+                if (b.alive && b.isTarget && b.contains(mx, my)) {
+                    b.alive = false;
+                    game.score += 10 + Math.floor(game.combo / 3) * 5;
+                    game.combo++;
+                    if (game.combo > game.maxCombo) game.maxCombo = game.combo;
+                    hit = true;
+                    updateGameStats();
+
+                    // Efek ledakan kecil
+                    const pos = b.getPos();
+                    for (let i = 0; i < 12; i++) {
+                        const a = Math.random() * 2 * Math.PI;
+                        const spd = 1 + Math.random() * 3;
+                        // Simulasi partikel sederhana
+                    }
+                    break;
+                }
+            }
+
+            // Jika klik merah, combo reset
+            if (!hit) {
+                for (const b of game.balls) {
+                    if (b.alive && !b.isTarget && b.contains(mx, my)) {
+                        game.combo = 0;
+                        updateGameStats();
+                        // efek merah
+                        break;
+                    }
+                }
+            }
+        });
+
+        // Inisialisasi Game
+        initGame();
+        drawGame();
+
+        // ================================================================
+        //  INISIALISASI AKHIR
+        // ================================================================
+
+        console.log('🔄 Gerak Melingkar Interaktif siap!');
+        console.log('📚 Fitur: Materi, Simulasi, Contoh Soal, Kuis, Game');
+
+        // Set default tab
+        document.querySelector('[data-tab="materi"]').click();
+    </script>
+</body>
+</html>
