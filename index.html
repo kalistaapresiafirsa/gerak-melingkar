@@ -287,9 +287,6 @@
                     <span>🔗</span> Seporos
                     <span class="badge">ω₁ = ω₂</span>
                 </h1>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                    <a href="#" style="color:#6a8aaa; font-size:0.7rem; font-weight:700; text-decoration:none; padding:6px 14px; border:1px solid rgba(255,255,255,0.04); border-radius:30px;">⬅ Kembali</a>
-                </div>
             </div>
 
             <div class="main-layout">
@@ -363,8 +360,8 @@
 
     <script>
         // ================================================================
-        //  SIMULASI SEPOROS – ω SAMA, POROS SAMA
-        //  Sesuai dengan gambar yang diberikan
+        //  SIMULASI SEPOROS – ω SAMA, POROS SAMA (DIPERBAIKI)
+        //  Dua roda pada poros yang sama dengan posisi yang benar
         // ================================================================
 
         const canvas = document.getElementById('rodaCanvas');
@@ -390,8 +387,7 @@
             R1: 2.0,
             R2: 1.2,
             omega: 2.0,
-            angle1: 0,
-            angle2: 0,
+            angle: 0, // satu sudut untuk kedua roda (ω sama)
             running: true,
             animId: null,
         };
@@ -410,13 +406,15 @@
             ctx.fillStyle = '#0a1626';
             ctx.fillRect(0, 0, W, H);
 
+            // --- SKALA ---
             const scale = 50;
             const R1_px = state.R1 * scale;
             const R2_px = state.R2 * scale;
 
             // --- POSISI RODA (SEPOROS: POROS SAMA) ---
-            // Roda A di kiri, Roda B di kanan, poros vertikal di tengah
-            const gap = 20;
+            // Kedua roda berada pada poros yang sama (sumbu vertikal di tengah)
+            // Roda A di kiri, Roda B di kanan, dengan jarak agar tidak tumpang tindih
+            const gap = 30;
             const totalR = R1_px + R2_px + gap;
             const x1 = cx - totalR / 2 + R1_px; // roda kiri
             const x2 = cx + totalR / 2 - R2_px; // roda kanan
@@ -424,63 +422,75 @@
             const y2 = cy;
 
             // --- GAMBAR POROS (GARIS VERTIKAL) ---
-            ctx.strokeStyle = 'rgba(106,184,232,0.15)';
-            ctx.lineWidth = 2;
-            ctx.setLineDash([4, 6]);
-            ctx.beginPath();
-            ctx.moveTo(cx, 40);
-            ctx.lineTo(cx, H - 40);
-            ctx.stroke();
+            // Poros utama dari atas ke bawah
+            ctx.strokeStyle = 'rgba(106,184,232,0.2)';
+            ctx.lineWidth = 3;
             ctx.setLineDash([]);
+            ctx.beginPath();
+            ctx.moveTo(cx, 30);
+            ctx.lineTo(cx, H - 30);
+            ctx.stroke();
 
-            // Label poros
-            ctx.fillStyle = 'rgba(106,184,232,0.1)';
-            ctx.font = '10px sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('POROS SAMA', cx, 24);
-
-            // --- GAMBAR RODA A (kiri) ---
-            drawRoda(ctx, x1, y1, R1_px, state.angle1, '#3a8ab5', 'A', state.R1.toFixed(1));
-
-            // --- GAMBAR RODA B (kanan) ---
-            drawRoda(ctx, x2, y2, R2_px, state.angle2, '#f5a623', 'B', state.R2.toFixed(1));
-
-            // --- LABEL KECEPATAN SUDUT ---
-            ctx.fillStyle = 'rgba(255,255,255,0.08)';
-            ctx.font = '10px monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText(`ω_A = ${state.omega.toFixed(1)} rad/s`, x1, y1 - R1_px - 18);
-            ctx.fillText(`ω_B = ${state.omega.toFixed(1)} rad/s`, x2, y2 - R2_px - 18);
-
-            // --- LABEL HUBUNGAN ---
-            ctx.fillStyle = 'rgba(255,255,255,0.05)';
-            ctx.font = '11px sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('ω₁ = ω₂', cx, H - 18);
-
-            // --- ARAH PUTARAN (SAMA) ---
-            ctx.fillStyle = 'rgba(100,255,150,0.12)';
-            ctx.font = '16px sans-serif';
-            ctx.fillText('↻', x1 - R1_px - 30, cy);
-            ctx.fillText('↻', x2 + R2_px + 30, cy);
-
-            // --- GARIS HUBUNG POROS KE RODA ---
-            ctx.strokeStyle = 'rgba(106,184,232,0.05)';
-            ctx.lineWidth = 1;
-            ctx.setLineDash([3, 5]);
+            // Poros horizontal (penghubung ke roda)
+            ctx.strokeStyle = 'rgba(106,184,232,0.08)';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([6, 8]);
             ctx.beginPath();
             ctx.moveTo(x1, y1);
             ctx.lineTo(x2, y2);
             ctx.stroke();
             ctx.setLineDash([]);
-            ctx.fillStyle = 'rgba(106,184,232,0.05)';
-            ctx.font = '8px sans-serif';
-            ctx.fillText('poros', (x1 + x2) / 2, y1 + 20);
 
-            // Update angle
+            // Label poros
+            ctx.fillStyle = 'rgba(106,184,232,0.12)';
+            ctx.font = '11px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('POROS SAMA', cx, 22);
+
+            // --- GAMBAR RODA A (kiri) ---
+            drawRoda(ctx, x1, y1, R1_px, state.angle, '#3a8ab5', 'A', state.R1.toFixed(1));
+
+            // --- GAMBAR RODA B (kanan) ---
+            drawRoda(ctx, x2, y2, R2_px, state.angle, '#f5a623', 'B', state.R2.toFixed(1));
+
+            // --- LABEL KECEPATAN SUDUT ---
+            ctx.fillStyle = 'rgba(255,255,255,0.1)';
+            ctx.font = '11px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(`ω₁ = ${state.omega.toFixed(1)} rad/s`, x1, y1 - R1_px - 20);
+            ctx.fillText(`ω₂ = ${state.omega.toFixed(1)} rad/s`, x2, y2 - R2_px - 20);
+
+            // --- LABEL HUBUNGAN (di bawah) ---
+            ctx.fillStyle = 'rgba(255,255,255,0.06)';
+            ctx.font = '13px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('ω₁ = ω₂', cx, H - 16);
+
+            // --- ARAH PUTARAN (SAMA) ---
+            ctx.fillStyle = 'rgba(100,255,150,0.15)';
+            ctx.font = '18px sans-serif';
+            ctx.fillText('↻', x1 - R1_px - 35, cy + 6);
+            ctx.fillText('↻', x2 + R2_px + 35, cy + 6);
+
+            // --- LABEL ARAH ---
+            ctx.fillStyle = 'rgba(100,255,150,0.08)';
+            ctx.font = '9px sans-serif';
+            ctx.fillText('arah sama', x1 - R1_px - 35, cy + 28);
+            ctx.fillText('arah sama', x2 + R2_px + 35, cy + 28);
+
+            // --- TANDA HUBUNGAN SEPOROS ---
+            // Lingkaran kecil di poros
+            ctx.beginPath();
+            ctx.arc(cx, cy, 6, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(106,184,232,0.3)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(106,184,232,0.2)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Update angle (ω sama untuk kedua roda)
             if (state.running) {
-                state.angle1 += state.omega * 0.02;
-                state.angle2 += state.omega * 0.02; // ω sama → sudut sama
+                state.angle += state.omega * 0.02;
             }
         }
 
@@ -492,55 +502,62 @@
             // Lingkaran luar
             ctx.beginPath();
             ctx.arc(x, y, radius, 0, Math.PI * 2);
-            ctx.strokeStyle = color + '44';
-            ctx.lineWidth = 2;
+            ctx.strokeStyle = color + '55';
+            ctx.lineWidth = 2.5;
             ctx.stroke();
 
-            // Fill
-            const grad = ctx.createRadialGradient(x - radius * 0.2, y - radius * 0.2, radius * 0.1, x, y, radius);
-            grad.addColorStop(0, color + '33');
+            // Fill dengan gradien
+            const grad = ctx.createRadialGradient(x - radius * 0.2, y - radius * 0.2, radius * 0.05, x, y, radius);
+            grad.addColorStop(0, color + '44');
             grad.addColorStop(0.5, color + '22');
             grad.addColorStop(1, color + '11');
             ctx.fillStyle = grad;
             ctx.fill();
 
-            // Jari-jari penanda
+            // Jari-jari penanda (garis dari pusat ke tepi)
             const endX = x + radius * Math.cos(angle);
             const endY = y + radius * Math.sin(angle);
             ctx.beginPath();
             ctx.moveTo(x, y);
             ctx.lineTo(endX, endY);
-            ctx.strokeStyle = color + '66';
-            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = color + '77';
+            ctx.lineWidth = 2;
             ctx.stroke();
 
             // Titik di ujung jari-jari
             ctx.beginPath();
-            ctx.arc(endX, endY, 5, 0, Math.PI * 2);
-            ctx.fillStyle = color + '88';
+            ctx.arc(endX, endY, 6, 0, Math.PI * 2);
+            ctx.fillStyle = color + '99';
             ctx.fill();
+            ctx.strokeStyle = color + '44';
+            ctx.lineWidth = 1;
+            ctx.stroke();
 
-            // Lingkaran dalam (poros)
+            // Lingkaran dalam (poros roda)
             ctx.beginPath();
-            ctx.arc(x, y, radius * 0.12, 0, Math.PI * 2);
-            ctx.fillStyle = color + '66';
+            ctx.arc(x, y, radius * 0.1, 0, Math.PI * 2);
+            ctx.fillStyle = color + '77';
             ctx.fill();
 
             // Label R
             ctx.fillStyle = color;
-            ctx.font = 'bold 12px sans-serif';
+            ctx.font = 'bold 13px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('R' + label, x, y + 4);
-            ctx.fillStyle = 'rgba(255,255,255,0.2)';
-            ctx.font = '9px sans-serif';
-            ctx.fillText(`${labelText} m`, x, y + 22);
+            ctx.textBaseline = 'middle';
+            ctx.fillText('R' + label, x, y);
+
+            // Nilai R
+            ctx.fillStyle = 'rgba(255,255,255,0.25)';
+            ctx.font = '10px sans-serif';
+            ctx.textBaseline = 'top';
+            ctx.fillText(`${labelText} m`, x, y + 18);
 
             // Gigi-gigi (dekorasi)
-            const teeth = 12;
+            const teeth = 14;
             for (let i = 0; i < teeth; i++) {
-                const a = (i / teeth) * 2 * Math.PI + angle * 0.1;
-                const r1 = radius - 4;
-                const r2 = radius + 4;
+                const a = (i / teeth) * 2 * Math.PI + angle * 0.05;
+                const r1 = radius - 5;
+                const r2 = radius + 5;
                 const x1 = x + r1 * Math.cos(a);
                 const y1 = y + r1 * Math.sin(a);
                 const x2 = x + r2 * Math.cos(a);
@@ -549,9 +566,12 @@
                 ctx.moveTo(x1, y1);
                 ctx.lineTo(x2, y2);
                 ctx.strokeStyle = color + '22';
-                ctx.lineWidth = 1.5;
+                ctx.lineWidth = 2;
                 ctx.stroke();
             }
+
+            // Reset text baseline
+            ctx.textBaseline = 'alphabetic';
         }
 
         // ================================================================
@@ -576,13 +596,12 @@
             infoVB.textContent = v2.toFixed(2);
 
             // Update info box
-            const infoBox = document.getElementById('infoBox');
-            infoBox.innerHTML = `
+            document.getElementById('infoBox').innerHTML = `
                 💡 <span class="highlight">Seporos</span>: <span class="rumus">ω<sub>A</sub> = ω<sub>B</sub> = ω</span>
                 <br />
                 ω = <span id="infoOmega">${omega.toFixed(2)}</span> rad/s
                 <br />
-                v<sub>A</sub> = <span id="infoVA">${v1.toFixed(2)}</span> m/s, v<sub>B</sub> = <span id="infoVB">${v2.toFixed(2)}</span> m/s
+                v<sub>A</sub> = <span id="infoVA">${v1.toFixed(2)}</span> m/s &nbsp;|&nbsp; v<sub>B</sub> = <span id="infoVB">${v2.toFixed(2)}</span> m/s
                 <br />
                 <span style="color:#f5c542;">v<sub>A</sub>/R<sub>A</sub> = ${(v1/R1).toFixed(2)} = v<sub>B</sub>/R<sub>B</sub> = ${(v2/R2).toFixed(2)} = ω</span>
                 <br />
@@ -597,11 +616,9 @@
         // ================================================================
 
         function rodaLoop() {
-            if (state.running) {
-                drawRodaSimulation();
-                updateStats();
-                state.animId = requestAnimationFrame(rodaLoop);
-            }
+            drawRodaSimulation();
+            updateStats();
+            state.animId = requestAnimationFrame(rodaLoop);
         }
 
         // ================================================================
@@ -611,57 +628,41 @@
         R1Slider.addEventListener('input', () => {
             state.R1 = parseFloat(R1Slider.value);
             R1Label.textContent = state.R1.toFixed(1) + ' m';
-            if (!state.running) { drawRodaSimulation();
-                updateStats(); }
         });
 
         R2Slider.addEventListener('input', () => {
             state.R2 = parseFloat(R2Slider.value);
             R2Label.textContent = state.R2.toFixed(1) + ' m';
-            if (!state.running) { drawRodaSimulation();
-                updateStats(); }
         });
 
         omegaSlider.addEventListener('input', () => {
             state.omega = parseFloat(omegaSlider.value);
             omegaLabel.textContent = state.omega.toFixed(1) + ' rad/s';
-            if (!state.running) { drawRodaSimulation();
-                updateStats(); }
         });
 
         document.getElementById('simPlay').addEventListener('click', () => {
-            if (!state.running) {
-                state.running = true;
-                document.getElementById('simPlay').style.display = 'none';
-                document.getElementById('simPause').style.display = 'inline-flex';
-                rodaLoop();
-            }
+            state.running = true;
+            document.getElementById('simPlay').style.display = 'none';
+            document.getElementById('simPause').style.display = 'inline-flex';
         });
 
         document.getElementById('simPause').addEventListener('click', () => {
             state.running = false;
-            if (state.animId) cancelAnimationFrame(state.animId);
             document.getElementById('simPlay').style.display = 'inline-flex';
             document.getElementById('simPause').style.display = 'none';
         });
 
         document.getElementById('simReset').addEventListener('click', () => {
-            state.running = false;
-            if (state.animId) cancelAnimationFrame(state.animId);
-            state.angle1 = 0;
-            state.angle2 = 0;
-            document.getElementById('simPlay').style.display = 'inline-flex';
-            document.getElementById('simPause').style.display = 'none';
-            drawRodaSimulation();
-            updateStats();
+            state.angle = 0;
+            state.running = true;
+            document.getElementById('simPlay').style.display = 'none';
+            document.getElementById('simPause').style.display = 'inline-flex';
         });
 
         // ================================================================
         //  INIT
         // ================================================================
 
-        drawRodaSimulation();
-        updateStats();
         rodaLoop();
 
         console.log('🔗 Simulasi Seporos siap!');
