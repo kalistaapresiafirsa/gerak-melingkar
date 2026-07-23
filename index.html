@@ -1237,7 +1237,7 @@
                             Dua roda A dan B dihubungkan <span class="highlight">rantai</span>. R<sub>A</sub> = 20 cm, R<sub>B</sub> = 10 cm.
                             Jika ω<sub>A</sub> = 5 rad/s, <span class="highlight">ω<sub>B</sub> = ?</span>
                             <br /><br />
-                            <span style="color:#6a8aaa; font-size:0.9rem;">(Hubungan setali: v<sub>A</sub> = v<sub>B</sub>)</span>
+                            <span style="color:#6a8aaa; font-size:0.9rem;">(Hubungan setali: v<sub>A</sub> = v<sub>B</sub> → ω<sub>A</sub>·R<sub>A</sub> = ω<sub>B</sub>·R<sub>B</sub>)</span>
                         </div>
                         <button class="btn-soal" data-target="jawab2">Lihat Jawaban</button>
                         <div class="soal-answer" id="jawab2">
@@ -1644,7 +1644,7 @@
                 arah1 = 1;
                 arah2 = 1;
                 labelType = 'SEPOROS';
-                rumusText = 'ω_A = ω_B';
+                rumusText = 'ω_A = ω_B  dan  v_A/R_A = v_B/R_B';
 
                 ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
                 ctxRoda.font = '12px sans-serif';
@@ -1703,6 +1703,13 @@
                 ctxRoda.fillText('↻', x1 - R1_px - 30, cy);
                 ctxRoda.fillText('↻', x2 + R2_px + 30, cy);
 
+                // Tampilkan contoh perhitungan seperti di gambar
+                const omega2 = calculateOmega2();
+                ctxRoda.fillStyle = 'rgba(255,255,255,0.05)';
+                ctxRoda.font = '10px monospace';
+                ctxRoda.textAlign = 'center';
+                ctxRoda.fillText(`ω_A = ${rodaState.omega1.toFixed(1)} rad/s  →  ω_B = ${omega2.toFixed(2)} rad/s`, cx, H - 20);
+
             } else { // bersinggungan
                 // BERSINGGUNGAN: v sama, arah berlawanan
                 const totalR = R1_px + R2_px;
@@ -1748,7 +1755,7 @@
             ctxRoda.font = '9px monospace';
             ctxRoda.fillText(`ω_A = ${rodaState.omega1.toFixed(1)} rad/s`, x1, y1 - R1_px - 16);
             const omega2 = calculateOmega2();
-            ctxRoda.fillText(`ω_B = ${omega2.toFixed(1)} rad/s`, x2, y2 - R2_px - 16);
+            ctxRoda.fillText(`ω_B = ${omega2.toFixed(2)} rad/s`, x2, y2 - R2_px - 16);
 
             // Update angle
             if (rodaState.running) {
@@ -1859,7 +1866,7 @@
 
             if (rodaState.type === 'seporos') {
                 typeText = 'Seporos';
-                rumusText = 'ω_A = ω_B';
+                rumusText = 'ω_A = ω_B  dan  v_A/R_A = v_B/R_B';
                 arahText = 'sama';
                 arahEmoji = '↻';
             } else if (rodaState.type === 'setali') {
@@ -1889,7 +1896,7 @@
             rodaInfo.innerHTML = `
                 💡 <span class="highlight">${typeText}</span>: <span class="rumus">${rumusText}</span>
                 <br />
-                ω_A = ${rodaState.omega1.toFixed(1)} rad/s &nbsp;|&nbsp; ω_B = ${omega2.toFixed(2)} rad/s
+                ω_A = ${rodaState.omega1.toFixed(2)} rad/s &nbsp;|&nbsp; ω_B = ${omega2.toFixed(2)} rad/s
                 <br />
                 v_A = ${v1.toFixed(2)} m/s &nbsp;|&nbsp; v_B = ${v2.toFixed(2)} m/s
                 <br />
