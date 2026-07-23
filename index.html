@@ -92,11 +92,11 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
         .nav-tabs button {
-            padding: 8px 16px;
+            padding: 8px 14px;
             border: none;
             border-radius: 40px;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             cursor: pointer;
             transition: all 0.2s;
             background: transparent;
@@ -244,7 +244,7 @@
         }
 
         /* ================================================================
-           TAB 2: SIMULASI
+           TAB 2: SIMULASI GERAK MELINGKAR
            ================================================================ */
 
         .sim-layout {
@@ -382,7 +382,155 @@
         }
 
         /* ================================================================
-           TAB 3: CONTOH SOAL (L3)
+           TAB 3: SIMULASI HUBUNGAN RODA-RODA (BARU)
+           ================================================================ */
+
+        .roda-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 860px) {
+            .roda-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .roda-canvas-wrap {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 20px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .roda-canvas-wrap canvas {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            border-radius: 14px;
+            background: #0a1626;
+            display: block;
+        }
+
+        .roda-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .roda-controls .control-group {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            padding: 14px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .roda-controls .control-group label {
+            color: #8aaac0;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .roda-controls .control-group label span {
+            color: #d0e8f5;
+            font-weight: 700;
+        }
+        .roda-controls input[type="range"] {
+            width: 100%;
+            height: 4px;
+            -webkit-appearance: none;
+            background: linear-gradient(90deg, #1a3a5a, #4a8ab5);
+            border-radius: 10px;
+            outline: none;
+            margin-top: 6px;
+        }
+        .roda-controls input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #6ab8e8, #2a7aaa);
+            border-radius: 50%;
+            border: 2px solid #b0d8f0;
+            box-shadow: 0 0 20px rgba(74, 138, 181, 0.3);
+            cursor: pointer;
+        }
+
+        .roda-type-selector {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .roda-type-selector button {
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            color: #8aaac0;
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            flex: 1;
+            min-width: 80px;
+        }
+        .roda-type-selector button:hover {
+            border-color: rgba(106, 184, 232, 0.2);
+            color: white;
+        }
+        .roda-type-selector button.active {
+            border-color: #6ab8e8;
+            background: rgba(106, 184, 232, 0.1);
+            color: #6ab8e8;
+        }
+
+        .roda-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .roda-stats .stat {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+        .roda-stats .stat .val {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #d0e8f5;
+        }
+        .roda-stats .stat .val.gold {
+            color: #f5c542;
+        }
+        .roda-stats .stat .val.green {
+            color: #5ac87a;
+        }
+        .roda-stats .stat .val.blue {
+            color: #6ab8e8;
+        }
+        .roda-stats .stat .lbl {
+            font-size: 0.55rem;
+            color: #6a8aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .roda-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #8aaac0;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            border-left: 3px solid #f5a623;
+        }
+        .roda-info .highlight {
+            color: #f5c542;
+            font-weight: 700;
+        }
+
+        /* ================================================================
+           TAB 4: CONTOH SOAL L3
            ================================================================ */
 
         .soal-container {
@@ -489,7 +637,7 @@
         }
 
         /* ================================================================
-           TAB 4: KUIS
+           TAB 5: KUIS
            ================================================================ */
 
         .quiz-container {
@@ -629,7 +777,7 @@
         }
 
         /* ================================================================
-           TAB 5: GAME (FIXED SKOR)
+           TAB 6: GAME
            ================================================================ */
 
         .game-area {
@@ -777,8 +925,8 @@
                 font-size: 1.3rem;
             }
             .nav-tabs button {
-                padding: 6px 10px;
-                font-size: 0.6rem;
+                padding: 5px 8px;
+                font-size: 0.55rem;
             }
             .materi-card {
                 padding: 14px 16px;
@@ -787,6 +935,9 @@
                 grid-template-columns: 1fr;
             }
             .sim-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .roda-stats {
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -801,24 +952,24 @@
             <div class="header">
                 <h1>
                     <span class="emoji">🔄</span> Gerak Melingkar
-                    <span class="badge">Interaktif + HOTS</span>
+                    <span class="badge">Interaktif + Roda</span>
                 </h1>
                 <div class="nav-tabs" id="navTabs">
                     <button class="active" data-tab="materi">📖 Materi</button>
-                    <button data-tab="simulasi">🎮 Simulasi</button>
-                    <button data-tab="soal">📝 Contoh Soal L3</button>
+                    <button data-tab="simulasi">🎮 Simulasi GM</button>
+                    <button data-tab="roda">⚙️ Simulasi Roda</button>
+                    <button data-tab="soal">📝 Soal L3</button>
                     <button data-tab="kuis">🧠 Kuis</button>
                     <button data-tab="game">🏆 Game</button>
                 </div>
             </div>
 
             <!-- ============================================================
-            TAB 1: MATERI (dengan Hubungan Roda-Roda)
+            TAB 1: MATERI
             ============================================================ -->
             <div class="tab-content active" id="tab-materi">
                 <div class="materi-grid">
 
-                    <!-- Konsep Dasar -->
                     <div class="materi-card">
                         <h3>📐 Konsep Dasar</h3>
                         <p><strong>Gerak Melingkar</strong> adalah gerak benda yang lintasannya berbentuk lingkaran.</p>
@@ -827,19 +978,14 @@
                             <li><strong>Periode (T)</strong> : waktu untuk satu putaran penuh (sekon)</li>
                             <li><strong>Frekuensi (f)</strong> : jumlah putaran per detik (Hz), f = 1/T</li>
                             <li><strong>Jari-jari (R)</strong> : jarak dari pusat ke benda (meter)</li>
-                            <li><strong>Kecepatan Sudut (ω)</strong> : besar sudut yang ditempuh per satuan waktu (rad/s)</li>
+                            <li><strong>Kecepatan Sudut (ω)</strong> : sudut yang ditempuh per satuan waktu (rad/s)</li>
                         </ul>
                         <div class="concept-box">
                             <div class="label">💡 Konsep Kunci</div>
-                            <p>Pada GM, <strong>besar kecepatan (kelajuan) bisa tetap</strong>, tetapi <strong>arahnya selalu berubah</strong> karena ada percepatan sentripetal yang mengubah arah gerak.</p>
-                        </div>
-                        <div class="formula-box">
-                            <div class="formula">v = ω · R</div>
-                            <div class="desc">Hubungan kecepatan linear dan sudut</div>
+                            <p>Pada GM, <strong>besar kecepatan (kelajuan) bisa tetap</strong>, tetapi <strong>arahnya selalu berubah</strong> karena ada percepatan sentripetal.</p>
                         </div>
                     </div>
 
-                    <!-- Besaran & Gaya -->
                     <div class="materi-card">
                         <h3>📏 Besaran & Gaya Sentripetal</h3>
                         <div class="formula-box">
@@ -847,23 +993,23 @@
                             <div class="desc">Kecepatan sudut (rad/s)</div>
                         </div>
                         <div class="formula-box">
-                            <div class="formula">a<sub>s</sub> = v²/R = ω² · R</div>
-                            <div class="desc">Percepatan sentripetal (m/s²) — menuju pusat</div>
+                            <div class="formula">a<sub>s</sub> = v²/R = ω²·R</div>
+                            <div class="desc">Percepatan sentripetal (m/s²)</div>
                         </div>
                         <div class="formula-box">
-                            <div class="formula">F<sub>s</sub> = m · a<sub>s</sub> = m · v²/R = m · ω² · R</div>
-                            <div class="desc">Gaya sentripetal (Newton)</div>
+                            <div class="formula">F<sub>s</sub> = m·v²/R = m·ω²·R</div>
+                            <div class="desc">Gaya sentripetal (N)</div>
                         </div>
                         <div class="highlight-box">
                             <div class="label">⚠️ Perhatikan</div>
-                            <p>Percepatan sentripetal <strong>tidak mengubah besar kecepatan</strong>, hanya mengubah arahnya. Gaya sentripetal adalah <strong>hasil resultan gaya</strong> yang arahnya menuju pusat.</p>
+                            <p>Percepatan sentripetal <strong>tidak mengubah besar kecepatan</strong>, hanya mengubah arahnya.</p>
                         </div>
                     </div>
 
-                    <!-- HUBUNGAN RODA-RODA (BARU) -->
+                    <!-- HUBUNGAN RODA-RODA -->
                     <div class="materi-card" style="grid-column: 1 / -1; border-color: rgba(245, 166, 35, 0.2);">
                         <h3 style="color: #f5a623;">⚙️ Hubungan Roda-Roda</h3>
-                        <p style="margin-bottom:12px;">Konsep ini menghubungkan gerak melingkar pada beberapa roda yang saling terhubung. Ada <strong>3 jenis hubungan</strong>:</p>
+                        <p style="margin-bottom:12px;">Menghubungkan gerak melingkar pada beberapa roda yang saling terhubung. Ada <strong>3 jenis hubungan</strong>:</p>
 
                         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin:12px 0;">
                             <div style="background:rgba(0,0,0,0.2); border-radius:12px; padding:14px; border-left:3px solid #6ab8e8;">
@@ -877,15 +1023,15 @@
                             </div>
                             <div style="background:rgba(0,0,0,0.2); border-radius:12px; padding:14px; border-left:3px solid #f5c542;">
                                 <h4 style="color:#f5c542; font-size:0.9rem;">⛓️ Bersinggungan</h4>
-                                <p style="font-size:0.85rem; color:#b0c8e0; margin-top:4px;">Dua roda <strong>bersentuhan langsung</strong> atau dihubungkan <strong>tali/rantai</strong>.</p>
+                                <p style="font-size:0.85rem; color:#b0c8e0; margin-top:4px;">Dua roda <strong>bersentuhan langsung</strong>.</p>
                                 <div class="formula-box" style="margin:6px 0; padding:8px 12px;">
                                     <div class="formula" style="font-size:1rem;">v₁ = v₂</div>
                                     <div class="desc" style="font-size:0.7rem;">Kecepatan linear sama</div>
                                 </div>
-                                <p style="font-size:0.8rem; color:#8aaac0;">Contoh: <em>Roda gigi yang bersentuhan, ban dan aspal</em></p>
+                                <p style="font-size:0.8rem; color:#8aaac0;">Contoh: <em>Roda gigi yang bersentuhan</em></p>
                             </div>
                             <div style="background:rgba(0,0,0,0.2); border-radius:12px; padding:14px; border-left:3px solid #5ac87a;">
-                                <h4 style="color:#5ac87a; font-size:0.9rem;">🔧 Setali (Gear)</h4>
+                                <h4 style="color:#5ac87a; font-size:0.9rem;">🔧 Setali (Rantai)</h4>
                                 <p style="font-size:0.85rem; color:#b0c8e0; margin-top:4px;">Dua roda <strong>dihubungkan dengan rantai/sabuk</strong>.</p>
                                 <div class="formula-box" style="margin:6px 0; padding:8px 12px;">
                                     <div class="formula" style="font-size:1rem;">v₁ = v₂</div>
@@ -911,7 +1057,7 @@
             </div>
 
             <!-- ============================================================
-            TAB 2: SIMULASI
+            TAB 2: SIMULASI GERAK MELINGKAR
             ============================================================ -->
             <div class="tab-content" id="tab-simulasi">
                 <div class="sim-layout">
@@ -961,168 +1107,151 @@
             </div>
 
             <!-- ============================================================
-            TAB 3: CONTOH SOAL L3 (HOTS)
+            TAB 3: SIMULASI HUBUNGAN RODA-RODA (BARU)
+            ============================================================ -->
+            <div class="tab-content" id="tab-roda">
+                <div class="roda-layout">
+                    <div class="roda-canvas-wrap">
+                        <canvas id="rodaCanvas" width="600" height="600"></canvas>
+                    </div>
+                    <div class="roda-controls">
+                        <div class="roda-type-selector">
+                            <button class="active" data-type="seporos">🔗 Seporos</button>
+                            <button data-type="bersinggungan">⛓️ Bersinggungan</button>
+                            <button data-type="setali">🔧 Setali</button>
+                        </div>
+
+                        <div class="control-group">
+                            <label>R<sub>1</sub> (Jari-jari roda 1) <span id="rodaR1Label">2.0 m</span></label>
+                            <input type="range" id="rodaR1Slider" min="0.8" max="4" step="0.1" value="2.0" />
+                        </div>
+                        <div class="control-group">
+                            <label>R<sub>2</sub> (Jari-jari roda 2) <span id="rodaR2Label">1.2 m</span></label>
+                            <input type="range" id="rodaR2Slider" min="0.8" max="4" step="0.1" value="1.2" />
+                        </div>
+                        <div class="control-group">
+                            <label>ω<sub>1</sub> (Kecepatan sudut roda 1) <span id="rodaOmega1Label">2.0 rad/s</span></label>
+                            <input type="range" id="rodaOmega1Slider" min="0.5" max="5" step="0.1" value="2.0" />
+                        </div>
+
+                        <div class="roda-stats">
+                            <div class="stat">
+                                <div class="val gold" id="rodaOmega2">0.0</div>
+                                <div class="lbl">ω₂ (rad/s)</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val green" id="rodaV1">0.0</div>
+                                <div class="lbl">v₁ (m/s)</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val blue" id="rodaV2">0.0</div>
+                                <div class="lbl">v₂ (m/s)</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val" id="rodaRatio">1.00</div>
+                                <div class="lbl">ω₁/ω₂ = R₂/R₁</div>
+                            </div>
+                        </div>
+
+                        <div class="roda-info" id="rodaInfo">
+                            💡 <span class="highlight">Seporos</span>: ω₁ = ω₂ = <span id="rodaInfoOmega">2.0</span> rad/s
+                            <br />
+                            v₁ = <span id="rodaInfoV1">4.0</span> m/s, v₂ = <span id="rodaInfoV2">2.4</span> m/s
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+            TAB 4: CONTOH SOAL L3
             ============================================================ -->
             <div class="tab-content" id="tab-soal">
                 <div class="soal-container">
-
-                    <!-- Soal 1: Konseptual L3 -->
+                    <!-- Soal 1 -->
                     <div class="soal-card">
                         <div class="soal-header">
-                            <div class="soal-num">📝 Soal 1 (L3 - Analisis)</div>
-                            <div class="soal-level">🔥 HOTS | Konseptual</div>
+                            <div class="soal-num">📝 Soal 1 (L3 - Konseptual)</div>
+                            <div class="soal-level">🔥 HOTS | Analisis</div>
                         </div>
                         <div class="soal-text">
-                            Sebuah benda bergerak melingkar beraturan. <span class="highlight">Manakah pernyataan yang PALING TEPAT</span> mengenai percepatan yang dialami benda?
+                            Pada GMB, <span class="highlight">manakah pernyataan yang PALING TEPAT</span> mengenai percepatan?
                             <br /><br />
-                            A. Percepatan bernilai nol karena kecepatan tetap<br />
-                            B. Percepatan selalu tegak lurus dengan kecepatan<br />
-                            C. Percepatan searah dengan kecepatan<br />
-                            D. Percepatan berlawanan arah dengan kecepatan<br />
-                            E. Percepatan berubah-ubah besarnya
+                            A. Percepatan nol karena kecepatan tetap<br />
+                            B. Percepatan tegak lurus kecepatan<br />
+                            C. Percepatan searah kecepatan<br />
+                            D. Percepatan berlawanan kecepatan
                         </div>
-                        <button class="btn-soal" data-target="jawab1">Lihat Jawaban & Pembahasan</button>
+                        <button class="btn-soal" data-target="jawab1">Lihat Jawaban</button>
                         <div class="soal-answer" id="jawab1">
                             <div class="label">✅ Jawaban: B</div>
-                            <div class="step">
-                                <strong>Pembahasan Konseptual:</strong><br />
-                                Pada GMB, kecepatan linear (v) selalu <strong>tangensial</strong> (menyinggung lintasan), sedangkan percepatan sentripetal (a<sub>s</sub>) selalu <strong>menuju pusat</strong>.
-                                <br /><br />
-                                Karena arah v adalah tangensial dan arah a<sub>s</sub> adalah radial (menuju pusat), maka <strong>keduanya saling tegak lurus</strong>.
-                                <br /><br />
-                                <strong>Mengapa pilihan lain salah?</strong><br />
-                                A: Percepatan tidak nol — ada percepatan sentripetal yang mengubah arah.<br />
-                                C & D: Percepatan tidak searah/berlawanan dengan kecepatan.<br />
-                                E: Pada GMB, <strong>besar</strong> percepatan tetap, hanya arahnya yang berubah.
-                            </div>
-                            <div class="concept-note">
-                                💡 <strong>Konsep Kunci:</strong> Percepatan sentripetal <strong>hanya mengubah arah</strong> kecepatan, bukan besarnya. Arah percepatan selalu menuju pusat lingkaran.
-                            </div>
+                            <div class="step">Pada GMB, v tangensial, aₛ radial (menuju pusat) → <strong>tegak lurus</strong>.</div>
+                            <div class="concept-note">💡 Percepatan sentripetal <strong>hanya mengubah arah</strong> kecepatan.</div>
                         </div>
                     </div>
 
-                    <!-- Soal 2: Hubungan Roda-Roda L3 -->
+                    <!-- Soal 2: Hubungan Roda -->
                     <div class="soal-card">
                         <div class="soal-header">
-                            <div class="soal-num">📝 Soal 2 (L3 - Analisis Hubungan Roda)</div>
-                            <div class="soal-level">🔥 HOTS | Hubungan Roda</div>
+                            <div class="soal-num">📝 Soal 2 (L3 - Hubungan Roda)</div>
+                            <div class="soal-level">🔥 HOTS | Setali</div>
                         </div>
                         <div class="soal-text">
-                            Dua roda A dan B dihubungkan dengan <span class="highlight">rantai</span> (setali). Jari-jari roda A = <span class="highlight">20 cm</span> dan roda B = <span class="highlight">10 cm</span>.
-                            Jika roda A berputar dengan kecepatan sudut <span class="highlight">5 rad/s</span>, <span class="highlight">berapakah kecepatan sudut roda B?</span>
-                            <br /><br />
-                            <span style="color:#6a8aaa; font-size:0.9rem;">(Gunakan konsep hubungan roda-roda setali)</span>
+                            Dua roda A dan B dihubungkan <span class="highlight">rantai</span>. R<sub>A</sub> = 20 cm, R<sub>B</sub> = 10 cm.
+                            Jika ω<sub>A</sub> = 5 rad/s, <span class="highlight">ω<sub>B</sub> = ?</span>
                         </div>
-                        <button class="btn-soal" data-target="jawab2">Lihat Jawaban & Pembahasan</button>
+                        <button class="btn-soal" data-target="jawab2">Lihat Jawaban</button>
                         <div class="soal-answer" id="jawab2">
                             <div class="label">✅ Jawaban: 10 rad/s</div>
-                            <div class="step">
-                                <strong>Diketahui:</strong><br />
-                                R<sub>A</sub> = 20 cm = 0,2 m<br />
-                                R<sub>B</sub> = 10 cm = 0,1 m<br />
-                                ω<sub>A</sub> = 5 rad/s<br /><br />
-                                <strong>Hubungan setali:</strong> v<sub>A</sub> = v<sub>B</sub> (kecepatan linear sama)<br />
-                                ω<sub>A</sub> · R<sub>A</sub> = ω<sub>B</sub> · R<sub>B</sub><br />
-                                5 × 0,2 = ω<sub>B</sub> × 0,1<br />
-                                1 = 0,1 · ω<sub>B</sub><br />
-                                <strong>ω<sub>B</sub> = 10 rad/s</strong>
-                            </div>
-                            <div class="concept-note">
-                                💡 <strong>Konsep Kunci:</strong> Pada hubungan setali/bersinggungan, <strong>kecepatan linear sama</strong> (v<sub>1</sub> = v<sub>2</sub>).
-                                Karena v = ω·R, maka <strong>roda dengan jari-jari lebih kecil</strong> memiliki <strong>kecepatan sudut lebih besar</strong>.
-                            </div>
+                            <div class="step">v<sub>A</sub> = v<sub>B</sub> → ω<sub>A</sub>·R<sub>A</sub> = ω<sub>B</sub>·R<sub>B</sub> → 5×0,2 = ω<sub>B</sub>×0,1 → <strong>ω<sub>B</sub> = 10 rad/s</strong></div>
+                            <div class="concept-note">💡 Roda kecil berputar <strong>lebih cepat</strong> (ω ∝ 1/R).</div>
                         </div>
                     </div>
 
-                    <!-- Soal 3: HOTS Tikungan -->
+                    <!-- Soal 3 -->
                     <div class="soal-card">
                         <div class="soal-header">
-                            <div class="soal-num">📝 Soal 3 (L3 - Aplikasi)</div>
-                            <div class="soal-level">🔥 HOTS | Pemecahan Masalah</div>
+                            <div class="soal-num">📝 Soal 3 (L3 - Tikungan)</div>
+                            <div class="soal-level">🔥 HOTS | Aplikasi</div>
                         </div>
                         <div class="soal-text">
-                            Sebuah mobil melaju di tikungan datar dengan jari-jari <span class="highlight">40 m</span>. Koefisien gesekan statis antara ban dan jalan adalah <span class="highlight">0,5</span>.
-                            <span class="highlight">Berapa kecepatan maksimum mobil</span> agar tidak slip? (g = 10 m/s²)
-                            <br /><br />
-                            <span style="color:#6a8aaa; font-size:0.9rem;">(Petunjuk: Gaya sentripetal berasal dari gesekan statis)</span>
+                            Mobil di tikungan datar R = 40 m, μ<sub>s</sub> = 0,5. <span class="highlight">v<sub>max</sub> = ?</span> (g = 10 m/s²)
                         </div>
-                        <button class="btn-soal" data-target="jawab3">Lihat Jawaban & Pembahasan</button>
+                        <button class="btn-soal" data-target="jawab3">Lihat Jawaban</button>
                         <div class="soal-answer" id="jawab3">
-                            <div class="label">✅ Jawaban: 14,14 m/s ≈ 50,9 km/jam</div>
-                            <div class="step">
-                                <strong>Diketahui:</strong><br />
-                                R = 40 m, μ<sub>s</sub> = 0,5, g = 10 m/s²<br /><br />
-                                <strong>Gaya sentripetal:</strong> F<sub>s</sub> = m · v²/R<br />
-                                <strong>Gaya gesek statis maksimum:</strong> f<sub>s max</sub> = μ<sub>s</sub> · N = μ<sub>s</sub> · m · g<br /><br />
-                                Agar tidak slip: F<sub>s</sub> ≤ f<sub>s max</sub><br />
-                                m · v²/R ≤ μ<sub>s</sub> · m · g<br />
-                                v²/R ≤ μ<sub>s</sub> · g<br />
-                                v ≤ √(μ<sub>s</sub> · g · R)<br />
-                                v = √(0,5 × 10 × 40) = √200 = <strong>14,14 m/s</strong> ≈ <strong>50,9 km/jam</strong>
-                            </div>
-                            <div class="concept-note">
-                                💡 <strong>Konsep Kunci:</strong> Pada tikungan datar, <strong>gaya gesek statis</strong> bertindak sebagai gaya sentripetal.
-                                Kecepatan maksimum bergantung pada <strong>koefisien gesek</strong> dan <strong>jari-jari tikungan</strong>.
-                            </div>
+                            <div class="label">✅ Jawaban: 14,14 m/s</div>
+                            <div class="step">F<sub>s</sub> = f<sub>s max</sub> → m·v²/R = μ·m·g → v = √(μ·g·R) = √(0,5×10×40) = <strong>14,14 m/s</strong></div>
+                            <div class="concept-note">💡 Gesekan statis sebagai <strong>gaya sentripetal</strong>.</div>
                         </div>
                     </div>
 
-                    <!-- Soal 4: HOTS Perbandingan -->
+                    <!-- Soal 4 -->
                     <div class="soal-card">
                         <div class="soal-header">
-                            <div class="soal-num">📝 Soal 4 (L3 - Analisis Perbandingan)</div>
-                            <div class="soal-level">🔥 HOTS | Perbandingan</div>
+                            <div class="soal-num">📝 Soal 4 (L3 - Perbandingan)</div>
+                            <div class="soal-level">🔥 HOTS | Analisis</div>
                         </div>
                         <div class="soal-text">
-                            Dua benda <span class="highlight">A dan B</span> bergerak melingkar beraturan dengan jari-jari <span class="highlight">R<sub>A</sub> = 2R<sub>B</sub></span>.
-                            Jika <span class="highlight">kecepatan sudut</span> kedua benda <span class="highlight">sama</span>, <span class="highlight">bandingkan</span>:
-                            <br /><br />
-                            a) Kecepatan linear (v<sub>A</sub> : v<sub>B</sub>)<br />
-                            b) Percepatan sentripetal (a<sub>A</sub> : a<sub>B</sub>)<br />
-                            c) Gaya sentripetal (F<sub>A</sub> : F<sub>B</sub>) jika massa sama
+                            R<sub>A</sub> = 2R<sub>B</sub>, ω<sub>A</sub> = ω<sub>B</sub>. <span class="highlight">Bandingkan v, a<sub>s</sub>, F<sub>s</sub></span> (m sama)!
                         </div>
-                        <button class="btn-soal" data-target="jawab4">Lihat Jawaban & Pembahasan</button>
+                        <button class="btn-soal" data-target="jawab4">Lihat Jawaban</button>
                         <div class="soal-answer" id="jawab4">
-                            <div class="label">✅ Jawaban: a) 2:1, b) 2:1, c) 2:1</div>
-                            <div class="step">
-                                <strong>Diketahui:</strong> R<sub>A</sub> = 2R<sub>B</sub>, ω<sub>A</sub> = ω<sub>B</sub> = ω<br /><br />
-                                <strong>a) Kecepatan linear:</strong><br />
-                                v = ω · R<br />
-                                v<sub>A</sub> = ω · 2R<sub>B</sub> = 2ωR<sub>B</sub><br />
-                                v<sub>B</sub> = ω · R<sub>B</sub><br />
-                                <strong>v<sub>A</sub> : v<sub>B</sub> = 2 : 1</strong><br /><br />
-                                <strong>b) Percepatan sentripetal:</strong><br />
-                                a<sub>s</sub> = ω² · R<br />
-                                a<sub>A</sub> = ω² · 2R<sub>B</sub> = 2ω²R<sub>B</sub><br />
-                                a<sub>B</sub> = ω² · R<sub>B</sub><br />
-                                <strong>a<sub>A</sub> : a<sub>B</sub> = 2 : 1</strong><br /><br />
-                                <strong>c) Gaya sentripetal (m sama):</strong><br />
-                                F<sub>s</sub> = m · a<sub>s</sub><br />
-                                F<sub>A</sub> = m · 2ω²R<sub>B</sub><br />
-                                F<sub>B</sub> = m · ω²R<sub>B</sub><br />
-                                <strong>F<sub>A</sub> : F<sub>B</sub> = 2 : 1</strong>
-                            </div>
-                            <div class="concept-note">
-                                💡 <strong>Konsep Kunci:</strong> Jika ω sama, maka <strong>v, a<sub>s</sub>, dan F<sub>s</sub> berbanding lurus dengan R</strong>.
-                                Semakin besar jari-jari, semakin besar ketiga besaran tersebut.
-                            </div>
+                            <div class="label">✅ Jawaban: v<sub>A</sub>:v<sub>B</sub> = 2:1, a<sub>A</sub>:a<sub>B</sub> = 2:1, F<sub>A</sub>:F<sub>B</sub> = 2:1</div>
+                            <div class="step">v = ω·R, a<sub>s</sub> = ω²·R, F<sub>s</sub> = m·ω²·R → semua <strong>berbanding lurus R</strong>.</div>
+                            <div class="concept-note">💡 Jika ω sama, <strong>semua besaran ∝ R</strong>.</div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <!-- ============================================================
-            TAB 4: KUIS
+            TAB 5: KUIS
             ============================================================ -->
             <div class="tab-content" id="tab-kuis">
-                <div class="quiz-container" id="quizContainer">
-                    <!-- Dinamis oleh JS -->
-                </div>
+                <div class="quiz-container" id="quizContainer"></div>
             </div>
 
             <!-- ============================================================
-            TAB 5: GAME (FIXED)
+            TAB 6: GAME
             ============================================================ -->
             <div class="tab-content" id="tab-game">
                 <div class="game-area">
@@ -1131,35 +1260,20 @@
                     </div>
                     <div class="game-side">
                         <div class="game-stats">
-                            <div class="stat">
-                                <div class="val" id="gameScore">0</div>
-                                <div class="lbl">⭐ Skor</div>
-                            </div>
-                            <div class="stat">
-                                <div class="val" id="gameLevel">1</div>
-                                <div class="lbl">📈 Level</div>
-                            </div>
-                            <div class="stat">
-                                <div class="val green" id="gameHit">0</div>
-                                <div class="lbl">✅ Benar</div>
-                            </div>
-                            <div class="stat">
-                                <div class="val red" id="gameMiss">0</div>
-                                <div class="lbl">❌ Salah</div>
-                            </div>
+                            <div class="stat"><div class="val" id="gameScore">0</div><div class="lbl">⭐ Skor</div></div>
+                            <div class="stat"><div class="val" id="gameLevel">1</div><div class="lbl">📈 Level</div></div>
+                            <div class="stat"><div class="val green" id="gameHit">0</div><div class="lbl">✅ Benar</div></div>
+                            <div class="stat"><div class="val red" id="gameMiss">0</div><div class="lbl">❌ Salah</div></div>
                         </div>
-
                         <div class="game-controls">
                             <button class="btn-game play" id="gameStart">▶ Mulai</button>
                             <button class="btn-game reset" id="gameReset">⟲ Reset</button>
                             <button class="btn-game difficulty" id="gameDifficulty">🎯 Normal</button>
                         </div>
-
                         <div class="game-instruction">
-                            🎯 <strong>Cara Main:</strong> Klik bola yang berwarna <strong style="color:#f5c542;">kuning</strong> untuk mendapat skor!
-                            Setiap level, kecepatan dan jumlah bola bertambah. Hindari klik bola merah ❌.
-                            <br /><br />
-                            <span style="color:#6a8aaa;">📊 Konsep: Bola bergerak melingkar dengan kecepatan sudut berbeda. Ini melatih pemahaman tentang frekuensi, periode, dan kecepatan sudut!</span>
+                            🎯 <strong>Cara Main:</strong> Klik bola <strong style="color:#f5c542;">kuning</strong> untuk skor, hindari bola <strong style="color:#ff4444;">merah</strong>!
+                            <br />
+                            📊 Konsep: Bola bergerak melingkar dengan kecepatan sudut berbeda.
                         </div>
                     </div>
                 </div>
@@ -1168,13 +1282,12 @@
         </div>
     </div>
 
-    <!-- ===== NOTIFICATION ===== -->
     <div class="game-notification" id="gameNotification"></div>
 
     <script>
         // ================================================================
         //  GERAK MELINGKAR – MEDIA INTERAKTIF LENGKAP
-        //  Fitur: Materi (dgn Hubungan Roda), Simulasi, Soal L3, Kuis, Game
+        //  Fitur: Materi, Simulasi GM, Simulasi Roda, Soal L3, Kuis, Game
         // ================================================================
 
         // ----- NAVIGASI TAB -----
@@ -1182,6 +1295,7 @@
         const contents = {
             materi: document.getElementById('tab-materi'),
             simulasi: document.getElementById('tab-simulasi'),
+            roda: document.getElementById('tab-roda'),
             soal: document.getElementById('tab-soal'),
             kuis: document.getElementById('tab-kuis'),
             game: document.getElementById('tab-game'),
@@ -1195,16 +1309,12 @@
                 Object.keys(contents).forEach(key => {
                     contents[key].classList.toggle('active', key === tab);
                 });
-                if (tab === 'simulasi') {
-                    drawSimulation();
-                    updateSimStats();
-                }
-                if (tab === 'game') {
-                    drawGame();
-                }
-                if (tab === 'kuis') {
-                    renderQuiz();
-                }
+                if (tab === 'simulasi') { drawSimulation();
+                    updateSimStats(); }
+                if (tab === 'roda') { drawRodaSimulation();
+                    updateRodaStats(); }
+                if (tab === 'game') drawGame();
+                if (tab === 'kuis') renderQuiz();
             });
         });
 
@@ -1227,14 +1337,7 @@
         const simPeriod = document.getElementById('simPeriod');
         const simFreq = document.getElementById('simFreq');
 
-        let simState = {
-            angle: 0,
-            running: false,
-            animId: null,
-            R: 2.0,
-            omega: 2.0,
-            m: 1.0,
-        };
+        let simState = { angle: 0, running: false, animId: null, R: 2.0, omega: 2.0, m: 1.0 };
 
         function drawSimulation() {
             const W = simCanvas.width,
@@ -1245,7 +1348,6 @@
             const R_px = simState.R * scale;
 
             ctxSim.clearRect(0, 0, W, H);
-
             ctxSim.fillStyle = '#0a1626';
             ctxSim.fillRect(0, 0, W, H);
 
@@ -1255,10 +1357,8 @@
                 ctxSim.strokeStyle = r === simState.R ? 'rgba(106,184,232,0.15)' : 'rgba(255,255,255,0.03)';
                 ctxSim.lineWidth = r === simState.R ? 1.5 : 0.5;
                 ctxSim.stroke();
-                if (r === simState.R) {
-                    ctxSim.fillStyle = 'rgba(106,184,232,0.05)';
-                    ctxSim.fill();
-                }
+                if (r === simState.R) { ctxSim.fillStyle = 'rgba(106,184,232,0.05)';
+                    ctxSim.fill(); }
             }
 
             ctxSim.fillStyle = 'rgba(255,255,255,0.15)';
@@ -1287,7 +1387,6 @@
             ctxSim.lineWidth = 2;
             ctxSim.stroke();
 
-            // Garis jari-jari
             ctxSim.beginPath();
             ctxSim.moveTo(cx, cy);
             ctxSim.lineTo(x, y);
@@ -1373,8 +1472,7 @@
             ctxSim.fillStyle = 'rgba(255,255,255,0.1)';
             ctxSim.font = '10px monospace';
             ctxSim.textAlign = 'left';
-            const deg = (simState.angle * 180 / Math.PI) % 360;
-            ctxSim.fillText(`θ = ${deg.toFixed(0)}°`, 14, 26);
+            ctxSim.fillText(`θ = ${((simState.angle * 180 / Math.PI) % 360).toFixed(0)}°`, 14, 26);
             ctxSim.fillText(`ω = ${simState.omega.toFixed(1)} rad/s`, 14, 44);
 
             if (simState.running) {
@@ -1391,7 +1489,6 @@
             const Fs = simState.m * as;
             const T = 2 * Math.PI / simState.omega;
             const f = 1 / T;
-
             simSpeed.textContent = v.toFixed(2);
             simCentripetal.textContent = as.toFixed(2);
             simForce.textContent = Fs.toFixed(2);
@@ -1408,23 +1505,17 @@
             }
         }
 
-        radiusSlider.addEventListener('input', () => {
-            simState.R = parseFloat(radiusSlider.value);
+        radiusSlider.addEventListener('input', () => { simState.R = parseFloat(radiusSlider.value);
             radiusLabel.textContent = simState.R.toFixed(1) + ' m';
             drawSimulation();
-            updateSimStats();
-        });
-        omegaSlider.addEventListener('input', () => {
-            simState.omega = parseFloat(omegaSlider.value);
+            updateSimStats(); });
+        omegaSlider.addEventListener('input', () => { simState.omega = parseFloat(omegaSlider.value);
             omegaLabel.textContent = simState.omega.toFixed(1) + ' rad/s';
             drawSimulation();
-            updateSimStats();
-        });
-        massSlider.addEventListener('input', () => {
-            simState.m = parseFloat(massSlider.value);
+            updateSimStats(); });
+        massSlider.addEventListener('input', () => { simState.m = parseFloat(massSlider.value);
             massLabel.textContent = simState.m.toFixed(1) + ' kg';
-            updateSimStats();
-        });
+            updateSimStats(); });
 
         document.getElementById('simPlay').addEventListener('click', () => {
             if (!simState.running) {
@@ -1454,6 +1545,312 @@
         updateSimStats();
 
         // ================================================================
+        //  SIMULASI HUBUNGAN RODA-RODA (BARU)
+        // ================================================================
+
+        const rodaCanvas = document.getElementById('rodaCanvas');
+        const ctxRoda = rodaCanvas.getContext('2d');
+
+        const rodaR1Slider = document.getElementById('rodaR1Slider');
+        const rodaR2Slider = document.getElementById('rodaR2Slider');
+        const rodaOmega1Slider = document.getElementById('rodaOmega1Slider');
+        const rodaR1Label = document.getElementById('rodaR1Label');
+        const rodaR2Label = document.getElementById('rodaR2Label');
+        const rodaOmega1Label = document.getElementById('rodaOmega1Label');
+        const rodaOmega2 = document.getElementById('rodaOmega2');
+        const rodaV1 = document.getElementById('rodaV1');
+        const rodaV2 = document.getElementById('rodaV2');
+        const rodaRatio = document.getElementById('rodaRatio');
+        const rodaInfoOmega = document.getElementById('rodaInfoOmega');
+        const rodaInfoV1 = document.getElementById('rodaInfoV1');
+        const rodaInfoV2 = document.getElementById('rodaInfoV2');
+        const rodaInfo = document.getElementById('rodaInfo');
+
+        let rodaState = {
+            type: 'seporos',
+            R1: 2.0,
+            R2: 1.2,
+            omega1: 2.0,
+            angle1: 0,
+            angle2: 0,
+            running: true,
+            animId: null,
+        };
+
+        function drawRodaSimulation() {
+            const W = rodaCanvas.width,
+                H = rodaCanvas.height;
+            const cx = W / 2,
+                cy = H / 2;
+
+            ctxRoda.clearRect(0, 0, W, H);
+            ctxRoda.fillStyle = '#0a1626';
+            ctxRoda.fillRect(0, 0, W, H);
+
+            const scale = 50;
+            const R1_px = rodaState.R1 * scale;
+            const R2_px = rodaState.R2 * scale;
+
+            // Posisi roda
+            let x1, y1, x2, y2;
+
+            if (rodaState.type === 'seporos') {
+                // Seporos: dua roda di poros yang sama
+                x1 = cx - 60;
+                y1 = cy;
+                x2 = cx + 60;
+                y2 = cy;
+
+                // Label
+                ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
+                ctxRoda.font = '12px sans-serif';
+                ctxRoda.textAlign = 'center';
+                ctxRoda.fillText('🔗 SEPOROS', cx, 28);
+                ctxRoda.fillText('ω₁ = ω₂', cx, 48);
+
+            } else if (rodaState.type === 'bersinggungan') {
+                // Bersinggungan: dua roda bersentuhan
+                const totalR = R1_px + R2_px;
+                x1 = cx - totalR / 2 + R1_px;
+                y1 = cy;
+                x2 = cx + totalR / 2 - R2_px;
+                y2 = cy;
+
+                ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
+                ctxRoda.font = '12px sans-serif';
+                ctxRoda.textAlign = 'center';
+                ctxRoda.fillText('⛓️ BERSINGGUNGAN', cx, 28);
+                ctxRoda.fillText('v₁ = v₂', cx, 48);
+
+                // Titik kontak
+                ctxRoda.beginPath();
+                ctxRoda.arc((x1 + x2) / 2, cy, 4, 0, Math.PI * 2);
+                ctxRoda.fillStyle = 'rgba(255,215,0,0.5)';
+                ctxRoda.fill();
+                ctxRoda.fillStyle = 'rgba(255,215,0,0.15)';
+                ctxRoda.font = '8px sans-serif';
+                ctxRoda.fillText('kontak', (x1 + x2) / 2, cy + 18);
+
+            } else { // setali
+                // Setali: dua roda dihubungkan rantai
+                const totalR = R1_px + R2_px + 40;
+                x1 = cx - totalR / 2 + R1_px;
+                y1 = cy;
+                x2 = cx + totalR / 2 - R2_px;
+                y2 = cy;
+
+                ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
+                ctxRoda.font = '12px sans-serif';
+                ctxRoda.textAlign = 'center';
+                ctxRoda.fillText('🔧 SETALI (RANTAI)', cx, 28);
+                ctxRoda.fillText('v₁ = v₂', cx, 48);
+
+                // Gambar rantai
+                ctxRoda.strokeStyle = 'rgba(200,200,200,0.15)';
+                ctxRoda.lineWidth = 2;
+                ctxRoda.setLineDash([6, 4]);
+                const topY = cy - R1_px - 10;
+                const bottomY = cy + R1_px + 10;
+                ctxRoda.beginPath();
+                ctxRoda.moveTo(x1, topY);
+                ctxRoda.lineTo(x2, topY);
+                ctxRoda.moveTo(x1, bottomY);
+                ctxRoda.lineTo(x2, bottomY);
+                ctxRoda.stroke();
+                ctxRoda.setLineDash([]);
+            }
+
+            // Gambar roda 1
+            drawRoda(ctxRoda, x1, y1, R1_px, rodaState.angle1, '#3a8ab5', 'R₁', rodaState.R1.toFixed(1));
+
+            // Gambar roda 2
+            drawRoda(ctxRoda, x2, y2, R2_px, rodaState.angle2, '#f5a623', 'R₂', rodaState.R2.toFixed(1));
+
+            // Arrow arah putaran
+            ctxRoda.fillStyle = 'rgba(255,255,255,0.1)';
+            ctxRoda.font = '10px sans-serif';
+            ctxRoda.textAlign = 'center';
+            ctxRoda.fillText('↻', x1, y1 + R1_px + 24);
+            ctxRoda.fillText(rodaState.type === 'seporos' ? '↻' : '↺', x2, y2 + R2_px + 24);
+
+            // Label kecepatan sudut
+            ctxRoda.fillStyle = 'rgba(255,255,255,0.08)';
+            ctxRoda.font = '9px monospace';
+            ctxRoda.fillText(`ω₁ = ${rodaState.omega1.toFixed(1)} rad/s`, x1, y1 - R1_px - 16);
+            const omega2 = calculateOmega2();
+            ctxRoda.fillText(`ω₂ = ${omega2.toFixed(1)} rad/s`, x2, y2 - R2_px - 16);
+
+            // Garis hubung (untuk seporos)
+            if (rodaState.type === 'seporos') {
+                ctxRoda.strokeStyle = 'rgba(106,184,232,0.1)';
+                ctxRoda.lineWidth = 1;
+                ctxRoda.setLineDash([4, 6]);
+                ctxRoda.beginPath();
+                ctxRoda.moveTo(x1, y1);
+                ctxRoda.lineTo(x2, y2);
+                ctxRoda.stroke();
+                ctxRoda.setLineDash([]);
+                ctxRoda.fillStyle = 'rgba(106,184,232,0.1)';
+                ctxRoda.font = '8px sans-serif';
+                ctxRoda.fillText('poros sama', (x1 + x2) / 2, y1 + 4);
+            }
+
+            // Update angle
+            if (rodaState.running) {
+                rodaState.angle1 += rodaState.omega1 * 0.02;
+                const omega2_calc = calculateOmega2();
+                rodaState.angle2 += omega2_calc * 0.02;
+            }
+        }
+
+        function drawRoda(ctx, x, y, radius, angle, color, label, labelText) {
+            // Lingkaran luar
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.strokeStyle = color + '44';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Fill
+            const grad = ctx.createRadialGradient(x - radius * 0.2, y - radius * 0.2, radius * 0.1, x, y, radius);
+            grad.addColorStop(0, color + '33');
+            grad.addColorStop(0.5, color + '22');
+            grad.addColorStop(1, color + '11');
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            // Jari-jari penanda
+            const endX = x + radius * Math.cos(angle);
+            const endY = y + radius * Math.sin(angle);
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(endX, endY);
+            ctx.strokeStyle = color + '66';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            // Titik di ujung jari-jari
+            ctx.beginPath();
+            ctx.arc(endX, endY, 5, 0, Math.PI * 2);
+            ctx.fillStyle = color + '88';
+            ctx.fill();
+
+            // Lingkaran dalam
+            ctx.beginPath();
+            ctx.arc(x, y, radius * 0.15, 0, Math.PI * 2);
+            ctx.fillStyle = color + '44';
+            ctx.fill();
+
+            // Label
+            ctx.fillStyle = color;
+            ctx.font = 'bold 11px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(label, x, y + 4);
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.font = '8px sans-serif';
+            ctx.fillText(`${labelText}m`, x, y + 20);
+
+            // Skala jari-jari
+            ctx.fillStyle = 'rgba(255,255,255,0.05)';
+            ctx.font = '7px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('R', x + radius * 0.5, y + 12);
+        }
+
+        function calculateOmega2() {
+            const R1 = rodaState.R1;
+            const R2 = rodaState.R2;
+            const omega1 = rodaState.omega1;
+
+            if (rodaState.type === 'seporos') {
+                return omega1;
+            } else { // bersinggungan atau setali
+                return omega1 * R1 / R2;
+            }
+        }
+
+        function updateRodaStats() {
+            const omega2 = calculateOmega2();
+            const v1 = rodaState.R1 * rodaState.omega1;
+            const v2 = rodaState.R2 * omega2;
+
+            rodaOmega2.textContent = omega2.toFixed(2);
+            rodaV1.textContent = v1.toFixed(2);
+            rodaV2.textContent = v2.toFixed(2);
+            rodaRatio.textContent = (rodaState.omega1 / omega2).toFixed(2);
+
+            rodaInfoOmega.textContent = omega2.toFixed(2);
+            rodaInfoV1.textContent = v1.toFixed(2);
+            rodaInfoV2.textContent = v2.toFixed(2);
+
+            // Update info text
+            let typeText = '';
+            let relationText = '';
+            if (rodaState.type === 'seporos') {
+                typeText = 'Seporos';
+                relationText = 'ω₁ = ω₂';
+            } else if (rodaState.type === 'bersinggungan') {
+                typeText = 'Bersinggungan';
+                relationText = 'v₁ = v₂';
+            } else {
+                typeText = 'Setali';
+                relationText = 'v₁ = v₂';
+            }
+            rodaInfo.innerHTML = `
+                💡 <span class="highlight">${typeText}</span>: ${relationText}
+                <br />
+                ω₁ = ${rodaState.omega1.toFixed(1)} rad/s, ω₂ = ${omega2.toFixed(2)} rad/s
+                <br />
+                v₁ = ${v1.toFixed(2)} m/s, v₂ = ${v2.toFixed(2)} m/s
+                <br />
+                <span style="color:#f5c542;">ω₁·R₁ = ${(rodaState.omega1 * rodaState.R1).toFixed(2)}</span> = 
+                <span style="color:#f5c542;">ω₂·R₂ = ${(omega2 * rodaState.R2).toFixed(2)}</span>
+            `;
+        }
+
+        function rodaLoop() {
+            if (rodaState.running) {
+                drawRodaSimulation();
+                updateRodaStats();
+                rodaState.animId = requestAnimationFrame(rodaLoop);
+            }
+        }
+
+        // Event Roda
+        document.querySelectorAll('.roda-type-selector button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.roda-type-selector button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                rodaState.type = btn.dataset.type;
+                drawRodaSimulation();
+                updateRodaStats();
+            });
+        });
+
+        rodaR1Slider.addEventListener('input', () => {
+            rodaState.R1 = parseFloat(rodaR1Slider.value);
+            rodaR1Label.textContent = rodaState.R1.toFixed(1) + ' m';
+            drawRodaSimulation();
+            updateRodaStats();
+        });
+        rodaR2Slider.addEventListener('input', () => {
+            rodaState.R2 = parseFloat(rodaR2Slider.value);
+            rodaR2Label.textContent = rodaState.R2.toFixed(1) + ' m';
+            drawRodaSimulation();
+            updateRodaStats();
+        });
+        rodaOmega1Slider.addEventListener('input', () => {
+            rodaState.omega1 = parseFloat(rodaOmega1Slider.value);
+            rodaOmega1Label.textContent = rodaState.omega1.toFixed(1) + ' rad/s';
+            drawRodaSimulation();
+            updateRodaStats();
+        });
+
+        // Start roda simulation
+        rodaState.running = true;
+        rodaLoop();
+
+        // ================================================================
         //  CONTOH SOAL – Toggle Jawaban
         // ================================================================
 
@@ -1462,7 +1859,7 @@
                 const target = document.getElementById(btn.dataset.target);
                 if (target.classList.contains('show')) {
                     target.classList.remove('show');
-                    btn.textContent = 'Lihat Jawaban & Pembahasan';
+                    btn.textContent = 'Lihat Jawaban';
                     btn.classList.remove('showing');
                 } else {
                     target.classList.add('show');
@@ -1473,129 +1870,84 @@
         });
 
         // ================================================================
-        //  KUIS INTERAKTIF (dengan konsep lebih dalam)
+        //  KUIS
         // ================================================================
 
         const quizData = [{
-            question: 'Pada gerak melingkar beraturan, kecepatan linear...',
-            options: [
-                'Tetap besar dan arahnya',
-                'Tetap besar tetapi arahnya berubah',
-                'Berubah besar tetapi arahnya tetap',
-                'Berubah besar dan arahnya'
-            ],
+            question: 'Pada GMB, kecepatan linear...',
+            options: ['Tetap besar dan arah', 'Tetap besar, arah berubah', 'Berubah besar, arah tetap', 'Berubah semua'],
             correct: 1,
-            explanation: 'Pada GMB, besar kecepatan (kelajuan) tetap, tetapi arahnya selalu berubah karena gaya sentripetal.'
+            explanation: 'Pada GMB, besar kecepatan tetap, arah berubah karena gaya sentripetal.'
         }, {
-            question: 'Arah percepatan sentripetal pada gerak melingkar adalah...',
-            options: [
-                'Menjauhi pusat lingkaran',
-                'Menuju pusat lingkaran',
-                'Searah dengan kecepatan',
-                'Berlawanan dengan kecepatan'
-            ],
+            question: 'Arah percepatan sentripetal adalah...',
+            options: ['Menjauhi pusat', 'Menuju pusat', 'Searah kecepatan', 'Berlawanan kecepatan'],
             correct: 1,
-            explanation: 'Percepatan sentripetal selalu menuju pusat lingkaran, mengubah arah kecepatan.'
+            explanation: 'Percepatan sentripetal selalu menuju pusat lingkaran.'
         }, {
-            question: 'Dua roda A dan B dihubungkan dengan rantai. Jika R_A = 2R_B, maka ω_A : ω_B = ...',
+            question: 'Dua roda dihubungkan rantai, R₁=2R₂, maka ω₁:ω₂ = ...',
             options: ['1:1', '1:2', '2:1', '4:1'],
             correct: 1,
-            explanation: 'Pada hubungan setali: v_A = v_B → ω_A·R_A = ω_B·R_B → ω_A·2R = ω_B·R → ω_A:ω_B = 1:2'
+            explanation: 'v₁=v₂ → ω₁·R₁=ω₂·R₂ → ω₁·2R=ω₂·R → ω₁:ω₂=1:2'
         }, {
-            question: 'Jika jari-jari lintasan diperbesar 2 kali dan kecepatan sudut tetap, percepatan sentripetal menjadi...',
-            options: ['2 kali lebih besar', '4 kali lebih besar', 'Tetap sama', '½ kali lebih kecil'],
+            question: 'Jika R diperbesar 2x, ω tetap, aₛ menjadi...',
+            options: ['2x lebih besar', '4x lebih besar', 'Tetap', '½x'],
             correct: 0,
-            explanation: 'aₛ = ω²·R, jika R diperbesar 2x dan ω tetap, maka aₛ menjadi 2x lebih besar.'
+            explanation: 'aₛ=ω²·R, jika R 2x maka aₛ 2x lebih besar.'
         }, {
-            question: 'Sebuah benda bergerak melingkar dengan kecepatan 10 m/s dan jari-jari 2 m. Percepatan sentripetalnya adalah...',
-            options: ['5 m/s²', '20 m/s²', '50 m/s²', '100 m/s²'],
-            correct: 2,
-            explanation: 'aₛ = v²/R = 100/2 = 50 m/s²'
-        }, {
-            question: 'Gaya sentripetal pada gerak melingkar berfungsi untuk...',
-            options: [
-                'Mengubah besar kecepatan',
-                'Mengubah arah kecepatan',
-                'Menghentikan benda',
-                'Memperlambat benda'
-            ],
+            question: 'Gaya sentripetal berfungsi untuk...',
+            options: ['Mengubah besar v', 'Mengubah arah v', 'Menghentikan benda', 'Memperlambat benda'],
             correct: 1,
-            explanation: 'Gaya sentripetal mengubah arah kecepatan, bukan besarnya (pada GMB).'
+            explanation: 'Gaya sentripetal mengubah arah kecepatan, bukan besarnya.'
         }, {
-            question: 'Pada tikungan miring, komponen gaya yang berperan sebagai gaya sentripetal adalah...',
-            options: [
-                'Gaya berat',
-                'Gaya normal',
-                'Komponen horizontal gaya normal',
-                'Gaya gesek statis'
-            ],
-            correct: 2,
-            explanation: 'Pada tikungan miring, komponen horizontal dari gaya normal bertindak sebagai gaya sentripetal.'
-        }, {
-            question: 'Sebuah roda berputar dengan frekuensi 2 Hz. Periodenya adalah...',
+            question: 'Frekuensi 2 Hz → periode = ...',
             options: ['0,5 s', '1 s', '2 s', '4 s'],
             correct: 0,
             explanation: 'T = 1/f = 1/2 = 0,5 s'
         }, ];
 
-        let quizIndex = 0;
-        let quizScore = 0;
-        let quizAnswered = false;
-        let quizResults = [];
+        let quizIndex = 0,
+            quizAnswered = false,
+            quizResults = [];
 
         function renderQuiz() {
             const container = document.getElementById('quizContainer');
-
             if (quizIndex >= quizData.length) {
-                const total = quizData.length;
                 const benar = quizResults.filter(r => r).length;
+                const total = quizData.length;
                 const persen = Math.round((benar / total) * 100);
-                let stars = '';
-                if (persen >= 80) stars = '⭐⭐⭐';
-                else if (persen >= 60) stars = '⭐⭐';
-                else if (persen >= 40) stars = '⭐';
-                else stars = '💪';
-
+                let stars = persen >= 80 ? '⭐⭐⭐' : persen >= 60 ? '⭐⭐' : persen >= 40 ? '⭐' : '💪';
                 container.innerHTML = `
                     <div class="quiz-result">
                         <div class="score-big">${benar}/${total}</div>
                         <div class="label">Jawaban Benar</div>
                         <div class="stars">${stars}</div>
-                        <div style="color:#8aaac0; font-size:0.9rem;">${persen}% — ${persen >= 70 ? '🎉 Bagus sekali! Konsep kamu kuat!' : persen >= 40 ? '📚 Terus belajar, fokus pada hubungan roda-roda!' : '💪 Semangat, pelajari ulang materi dan coba lagi!'}</div>
-                        <button class="btn-sim play" style="margin:16px auto 0; display:inline-flex;" onclick="resetQuiz()">🔄 Ulangi Kuis</button>
+                        <div style="color:#8aaac0;">${persen}%</div>
+                        <button class="btn-sim play" style="margin:16px auto 0;display:inline-flex;" onclick="resetQuiz()">🔄 Ulangi</button>
                     </div>
                 `;
                 return;
             }
-
             const q = quizData[quizIndex];
             const progress = quizData.map((_, i) => {
-                if (i < quizIndex) return `<div class="dot ${quizResults[i] ? 'done' : 'wrong'}"></div>`;
+                if (i < quizIndex) return `<div class="dot ${quizResults[i]?'done':'wrong'}"></div>`;
                 if (i === quizIndex) return `<div class="dot active"></div>`;
                 return `<div class="dot"></div>`;
             }).join('');
 
-            let optionsHtml = q.options.map((opt, i) => `
-                <button data-index="${i}" class="quiz-opt">${String.fromCharCode(65 + i)}. ${opt}</button>
-            `).join('');
-
             container.innerHTML = `
                 <div class="quiz-progress">${progress}</div>
                 <div class="quiz-card">
-                    <div class="quiz-num">Pertanyaan ${quizIndex + 1} dari ${quizData.length}</div>
+                    <div class="quiz-num">${quizIndex+1}/${quizData.length}</div>
                     <div class="quiz-question">${q.question}</div>
-                    <div class="quiz-options" id="quizOptions">${optionsHtml}</div>
-                    <div class="quiz-feedback" id="quizFeedback">
-                        <span class="icon">💡</span> Pilih jawaban, lalu klik "Jawab"
-                    </div>
-                    <button class="btn-sim play" id="quizAnswerBtn" style="margin-top:12px; display:inline-flex;">✅ Jawab</button>
-                    <button class="btn-sim reset" id="quizNextBtn" style="margin-top:12px; display:none; margin-left:10px;">➡ Selanjutnya</button>
+                    <div class="quiz-options" id="quizOptions">${q.options.map((o,i)=>`<button data-index="${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div>
+                    <div class="quiz-feedback" id="quizFeedback">💡 Pilih jawaban</div>
+                    <button class="btn-sim play" id="quizAnswerBtn" style="margin-top:12px;display:inline-flex;">✅ Jawab</button>
+                    <button class="btn-sim reset" id="quizNextBtn" style="margin-top:12px;display:none;">➡ Selanjutnya</button>
                 </div>
             `;
 
             const options = container.querySelectorAll('.quiz-opt');
             let selected = -1;
-
             options.forEach(btn => {
                 btn.addEventListener('click', () => {
                     if (quizAnswered) return;
@@ -1606,30 +1958,22 @@
             });
 
             document.getElementById('quizAnswerBtn').addEventListener('click', () => {
-                if (quizAnswered) return;
-                if (selected === -1) {
-                    document.getElementById('quizFeedback').innerHTML =
-                        '<span class="icon">⚠️</span> Pilih salah satu jawaban!';
+                if (quizAnswered || selected === -1) {
+                    if (selected === -1) document.getElementById('quizFeedback').innerHTML = '⚠️ Pilih jawaban!';
                     return;
                 }
                 quizAnswered = true;
                 const correct = q.correct;
                 const isCorrect = selected === correct;
                 quizResults.push(isCorrect);
-                if (isCorrect) quizScore++;
-
                 options.forEach((btn, i) => {
                     btn.classList.remove('selected');
                     if (i === correct) btn.classList.add('correct');
                     if (i === selected && !isCorrect) btn.classList.add('wrong');
                     btn.style.pointerEvents = 'none';
                 });
-
-                document.getElementById('quizFeedback').innerHTML = `
-                    <span class="icon">${isCorrect ? '✅' : '❌'}</span>
-                    ${isCorrect ? 'Benar! ' : 'Kurang tepat. '}
-                    ${q.explanation}
-                `;
+                document.getElementById('quizFeedback').innerHTML =
+                    `${isCorrect?'✅ Benar!':'❌ Kurang tepat.'} ${q.explanation}`;
                 document.getElementById('quizAnswerBtn').style.display = 'none';
                 document.getElementById('quizNextBtn').style.display = 'inline-flex';
             });
@@ -1641,18 +1985,14 @@
             });
         }
 
-        function resetQuiz() {
-            quizIndex = 0;
-            quizScore = 0;
+        function resetQuiz() { quizIndex = 0;
             quizAnswered = false;
             quizResults = [];
-            renderQuiz();
-        }
-
+            renderQuiz(); }
         renderQuiz();
 
         // ================================================================
-        //  GAME – Click the Circular Motion! (FIXED SKOR)
+        //  GAME
         // ================================================================
 
         const gameCanvas = document.getElementById('gameCanvas');
@@ -1691,37 +2031,19 @@
                 this.radius = 16 + Math.random() * 6;
                 this.isTarget = Math.random() < 0.55;
                 this.alive = true;
-                this.hit = false;
-                this.color = this.isTarget ?
-                    `hsl(${42 + Math.random() * 18}, 95%, 55%)` :
-                    `hsl(${0 + Math.random() * 20}, 85%, 50%)`;
+                this.color = this.isTarget ? `hsl(${42 + Math.random()*18}, 95%, 55%)` : `hsl(${0 + Math.random()*20}, 85%, 50%)`;
                 this.life = 1.0;
                 this.decay = 0.003 + Math.random() * 0.003;
-                this.id = Math.random();
-                // Untuk efek visual
                 this.pulse = 0;
             }
-
-            update() {
-                this.angle += this.omega * 0.02;
+            update() { this.angle += this.omega * 0.02;
                 this.life -= this.decay;
-                this.pulse += 0.04;
-                if (this.life <= 0) this.alive = false;
-            }
-
-            getPos() {
-                return {
-                    x: this.cx + this.R * Math.cos(this.angle),
-                    y: this.cy + this.R * Math.sin(this.angle)
-                };
-            }
-
+                this.pulse += 0.04; if (this.life <= 0) this.alive = false; }
+            getPos() { return { x: this.cx + this.R * Math.cos(this.angle), y: this.cy + this.R * Math.sin(this.angle) }; }
             draw(ctx) {
                 const pos = this.getPos();
                 const alpha = Math.min(1, this.life * 1.5);
-                const pulseEffect = 1 + 0.05 * Math.sin(this.pulse);
-
-                // Lingkaran lintasan
+                const pulse = 1 + 0.05 * Math.sin(this.pulse);
                 ctx.globalAlpha = 0.06 * alpha;
                 ctx.beginPath();
                 ctx.arc(this.cx, this.cy, this.R, 0, Math.PI * 2);
@@ -1729,22 +2051,18 @@
                 ctx.lineWidth = 1;
                 ctx.stroke();
                 ctx.globalAlpha = 1;
-
-                // Glow
                 const grad = ctx.createRadialGradient(pos.x, pos.y, 2, pos.x, pos.y, this.radius * 2.5);
                 if (this.isTarget) {
-                    grad.addColorStop(0, `rgba(255,215,0,${0.25 * alpha})`);
+                    grad.addColorStop(0, `rgba(255,215,0,${0.25*alpha})`);
                     grad.addColorStop(1, 'rgba(255,215,0,0)');
                 } else {
-                    grad.addColorStop(0, `rgba(255,50,50,${0.2 * alpha})`);
+                    grad.addColorStop(0, `rgba(255,50,50,${0.2*alpha})`);
                     grad.addColorStop(1, 'rgba(255,50,50,0)');
                 }
                 ctx.fillStyle = grad;
                 ctx.beginPath();
-                ctx.arc(pos.x, pos.y, this.radius * 2.5 * pulseEffect, 0, Math.PI * 2);
+                ctx.arc(pos.x, pos.y, this.radius * 2.5 * pulse, 0, Math.PI * 2);
                 ctx.fill();
-
-                // Bola
                 const grad2 = ctx.createRadialGradient(pos.x - 5, pos.y - 7, 3, pos.x, pos.y, this.radius);
                 if (this.isTarget) {
                     grad2.addColorStop(0, '#ffdd77');
@@ -1759,31 +2077,21 @@
                 ctx.shadowBlur = 25;
                 ctx.globalAlpha = alpha;
                 ctx.beginPath();
-                ctx.arc(pos.x, pos.y, this.radius * pulseEffect, 0, Math.PI * 2);
+                ctx.arc(pos.x, pos.y, this.radius * pulse, 0, Math.PI * 2);
                 ctx.fillStyle = grad2;
                 ctx.fill();
                 ctx.globalAlpha = 1;
                 ctx.shadowBlur = 0;
-
-                // Label
                 ctx.fillStyle = this.isTarget ? 'rgba(255,255,200,0.7)' : 'rgba(255,200,200,0.5)';
                 ctx.font = 'bold 10px sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText(this.isTarget ? '⭐' : '✖', pos.x, pos.y + 1);
-
-                // Nama konsep
-                ctx.fillStyle = 'rgba(255,255,255,0.05)';
-                ctx.font = '7px monospace';
-                ctx.textBaseline = 'top';
-                const concept = this.isTarget ? 'GMB' : 'GMBB';
-                ctx.fillText(concept, pos.x - 8, pos.y + this.radius + 4);
             }
-
             contains(px, py) {
                 const pos = this.getPos();
-                const dx = px - pos.x;
-                const dy = py - pos.y;
+                const dx = px - pos.x,
+                    dy = py - pos.y;
                 return dx * dx + dy * dy < (this.radius * 1.2) * (this.radius * 1.2);
             }
         }
@@ -1797,9 +2105,7 @@
             game.spawnTimer = 0;
             game.spawnInterval = 2.0;
             updateGameStats();
-            for (let i = 0; i < 4 + game.level; i++) {
-                game.balls.push(new CircularBall(game.level, game.difficulty));
-            }
+            for (let i = 0; i < 4 + game.level; i++) game.balls.push(new CircularBall(game.level, game.difficulty));
         }
 
         function updateGameStats() {
@@ -1810,9 +2116,7 @@
         }
 
         function spawnBall() {
-            if (game.balls.length < 12 + game.level * 2) {
-                game.balls.push(new CircularBall(game.level, game.difficulty));
-            }
+            if (game.balls.length < 12 + game.level * 2) game.balls.push(new CircularBall(game.level, game.difficulty));
         }
 
         function showNotification(text, isGood = true) {
@@ -1820,62 +2124,36 @@
             gameNotification.style.borderColor = isGood ? 'rgba(90,200,122,0.4)' : 'rgba(255,50,50,0.4)';
             gameNotification.classList.add('show');
             clearTimeout(game.notificationTimer);
-            game.notificationTimer = setTimeout(() => {
-                gameNotification.classList.remove('show');
-            }, 800);
+            game.notificationTimer = setTimeout(() => gameNotification.classList.remove('show'), 800);
         }
 
         function drawGame() {
             const W = gameCanvas.width,
                 H = gameCanvas.height;
             ctxGame.clearRect(0, 0, W, H);
-
-            // Latar
             const grad = ctxGame.createRadialGradient(300, 300, 50, 300, 300, 400);
             grad.addColorStop(0, '#1a2a4a');
             grad.addColorStop(1, '#0a0f1a');
             ctxGame.fillStyle = grad;
             ctxGame.fillRect(0, 0, W, H);
-
-            // Grid dekorasi
             ctxGame.strokeStyle = 'rgba(255,255,255,0.02)';
             ctxGame.lineWidth = 0.5;
-            for (let i = 0; i < W; i += 40) {
-                ctxGame.beginPath();
+            for (let i = 0; i < W; i += 40) { ctxGame.beginPath();
                 ctxGame.moveTo(i, 0);
                 ctxGame.lineTo(i, H);
                 ctxGame.stroke();
                 ctxGame.beginPath();
                 ctxGame.moveTo(0, i);
                 ctxGame.lineTo(W, i);
-                ctxGame.stroke();
-            }
-
-            // Update & draw
-            for (let i = game.balls.length - 1; i >= 0; i--) {
-                const b = game.balls[i];
-                b.update();
-                if (!b.alive) {
-                    game.balls.splice(i, 1);
-                    continue;
-                }
-                b.draw(ctxGame);
-            }
-
-            // HUD
+                ctxGame.stroke(); }
+            for (let i = game.balls.length - 1; i >= 0; i--) { const b = game.balls[i];
+                b.update(); if (!b.alive) { game.balls.splice(i, 1); continue; }
+                b.draw(ctxGame); }
             ctxGame.fillStyle = 'rgba(255,255,255,0.06)';
             ctxGame.font = '10px monospace';
             ctxGame.textAlign = 'left';
             ctxGame.textBaseline = 'top';
             ctxGame.fillText(`Level ${game.level}  |  Bola: ${game.balls.length}  |  ⭐ ${game.score}`, 14, 14);
-
-            // Legend
-            ctxGame.fillStyle = 'rgba(255,255,255,0.04)';
-            ctxGame.font = '8px sans-serif';
-            ctxGame.textAlign = 'right';
-            ctxGame.textBaseline = 'bottom';
-            ctxGame.fillText('⭐ = Target (klik untuk skor)  ✖ = Hindari', W - 14, H - 10);
-
             if (!game.running && game.balls.length > 0) {
                 ctxGame.fillStyle = 'rgba(255,255,255,0.08)';
                 ctxGame.font = 'bold 18px sans-serif';
@@ -1886,36 +2164,22 @@
         }
 
         function gameLoop() {
-            if (!game.running) {
-                drawGame();
-                return;
-            }
-
-            // Spawn
+            if (!game.running) { drawGame(); return; }
             game.spawnTimer += 0.02;
             const interval = Math.max(0.6, game.spawnInterval - game.level * 0.06);
-            if (game.spawnTimer > interval && game.balls.length < 15 + game.level * 2) {
-                spawnBall();
-                game.spawnTimer = 0;
-            }
-
-            // Level up
+            if (game.spawnTimer > interval && game.balls.length < 15 + game.level * 2) { spawnBall();
+                game.spawnTimer = 0; }
             if (game.score > 0 && game.score % 30 === 0 && game.level < 25) {
                 const newLevel = Math.floor(game.score / 30) + 1;
-                if (newLevel > game.level) {
-                    game.level = newLevel;
+                if (newLevel > game.level) { game.level = newLevel;
                     game.spawnInterval = Math.max(0.6, game.spawnInterval - 0.08);
                     updateGameStats();
-                    showNotification(`🎉 LEVEL ${game.level}!`, true);
-                    for (let i = 0; i < 2; i++) spawnBall();
-                }
+                    showNotification(`🎉 LEVEL ${game.level}!`, true); for (let i = 0; i < 2; i++) spawnBall(); }
             }
-
             drawGame();
             game.animId = requestAnimationFrame(gameLoop);
         }
 
-        // Event Game
         document.getElementById('gameStart').addEventListener('click', () => {
             if (!game.running) {
                 game.running = true;
@@ -1947,67 +2211,42 @@
             const levels = ['Normal', 'Sulit', 'Ekstrem'];
             game.difficulty = (game.difficulty % 3) + 1;
             document.getElementById('gameDifficulty').textContent = '🎯 ' + levels[game.difficulty - 1];
-            if (!game.running) {
-                initGame();
+            if (!game.running) { initGame();
                 drawGame();
-                showNotification(`🎯 ${levels[game.difficulty - 1]} mode`, true);
-            }
+                showNotification(`🎯 ${levels[game.difficulty-1]} mode`, true); }
         });
 
-        // KLIK CANVAS - SKOR FIXED
         gameCanvas.addEventListener('click', (e) => {
             if (!game.running) return;
-
             const rect = gameCanvas.getBoundingClientRect();
-            const scaleX = gameCanvas.width / rect.width;
-            const scaleY = gameCanvas.height / rect.height;
-            const mx = (e.clientX - rect.left) * scaleX;
-            const my = (e.clientY - rect.top) * scaleY;
-
+            const scaleX = gameCanvas.width / rect.width,
+                scaleY = gameCanvas.height / rect.height;
+            const mx = (e.clientX - rect.left) * scaleX,
+                my = (e.clientY - rect.top) * scaleY;
             let hitTarget = false;
-            let hitWrong = false;
-
-            // Cari bola yang diklik (urutan terbalik agar yang di atas lebih dulu)
             for (let i = game.balls.length - 1; i >= 0; i--) {
                 const b = game.balls[i];
                 if (!b.alive) continue;
                 if (b.contains(mx, my)) {
                     if (b.isTarget) {
-                        // HIT TARGET!
                         b.alive = false;
                         game.score += 10 + Math.floor(game.level / 2) * 2;
                         game.hit++;
                         hitTarget = true;
                         updateGameStats();
                         showNotification(`+${10 + Math.floor(game.level/2)*2} ⭐`, true);
-                        // Efek ledakan kecil (partikel visual sederhana)
-                        const pos = b.getPos();
-                        for (let j = 0; j < 10; j++) {
-                            const a = Math.random() * 2 * Math.PI;
-                            const spd = 1 + Math.random() * 3;
-                            // skip partikel kompleks, cukup notifikasi
-                        }
                         break;
                     } else {
-                        // KLIK BOLA MERAH - HUKUMAN
                         b.alive = false;
                         game.miss++;
-                        hitWrong = true;
                         updateGameStats();
                         showNotification('❌ Kena bola merah!', false);
-                        // Combo break (tapi kita tidak pakai combo)
                         break;
                     }
                 }
             }
-
-            // Jika tidak mengenai apa-apa
-            if (!hitTarget && !hitWrong) {
-                // Tidak ada efek, biarkan saja
-            }
         });
 
-        // Inisialisasi Game
         initGame();
         drawGame();
 
@@ -2016,8 +2255,8 @@
         // ================================================================
 
         console.log('🔄 Gerak Melingkar Interaktif siap!');
-        console.log('📚 Fitur: Materi (dgn Hubungan Roda), Simulasi, Soal L3, Kuis, Game');
-        console.log('🎯 Game: Klik bola kuning untuk skor!');
+        console.log('📚 Fitur: Materi, Simulasi GM, Simulasi Roda, Soal L3, Kuis, Game');
+        console.log('⚙️ Simulasi Roda: 3 jenis hubungan (seporos, bersinggungan, setali)');
 
         document.querySelector('[data-tab="materi"]').click();
     </script>
