@@ -243,7 +243,7 @@
             margin-top: 4px;
         }
 
-        /* ===== MATERI HUBUNGAN RODA-RODA (BARU) ===== */
+        /* ===== MATERI HUBUNGAN RODA-RODA ===== */
         .roda-materi-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -329,7 +329,7 @@
         }
 
         /* ================================================================
-           SIMULASI GERAK MELINGKAR
+           SIMULASI GERAK MELINGKAR (dengan vektor percepatan sentripetal)
            ================================================================ */
 
         .sim-layout {
@@ -404,7 +404,7 @@
 
         .sim-stats {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             gap: 8px;
         }
         .sim-stats .stat {
@@ -418,8 +418,20 @@
             font-weight: 700;
             color: #d0e8f5;
         }
+        .sim-stats .stat .val.green {
+            color: #5ac87a;
+        }
+        .sim-stats .stat .val.orange {
+            color: #e87a3a;
+        }
+        .sim-stats .stat .val.blue {
+            color: #6ab8e8;
+        }
+        .sim-stats .stat .val.red {
+            color: #e85a4a;
+        }
         .sim-stats .stat .lbl {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: #6a8aaa;
             text-transform: uppercase;
             letter-spacing: 0.3px;
@@ -464,6 +476,30 @@
         }
         .btn-sim.reset:hover {
             background: rgba(255, 255, 255, 0.12);
+        }
+
+        .sim-legend {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .sim-legend .item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: #8aaac0;
+            font-weight: 600;
+        }
+        .sim-legend .item .dot {
+            width: 18px;
+            height: 4px;
+            border-radius: 4px;
         }
 
         /* ================================================================
@@ -711,7 +747,7 @@
         }
 
         /* ================================================================
-           TES FORMATIF (dengan Nama, Kelas, Absen)
+           TES FORMATIF
            ================================================================ */
 
         .tes-container {
@@ -774,7 +810,6 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        /* Form identitas siswa */
         .tes-identitas {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -1296,12 +1331,11 @@
             </div>
 
             <!-- ============================================================
-            TAB 1: MATERI (dengan Hubungan Roda-Roda)
+            TAB 1: MATERI
             ============================================================ -->
             <div class="tab-content active" id="tab-materi">
                 <div class="materi-grid">
 
-                    <!-- Konsep Dasar -->
                     <div class="materi-card">
                         <h3>📐 Konsep Dasar</h3>
                         <p><strong>Gerak Melingkar</strong> adalah gerak benda yang lintasannya berbentuk lingkaran.</p>
@@ -1318,7 +1352,6 @@
                         </div>
                     </div>
 
-                    <!-- Besaran & Gaya -->
                     <div class="materi-card">
                         <h3>📏 Besaran & Gaya Sentripetal</h3>
                         <div class="formula-box">
@@ -1327,7 +1360,7 @@
                         </div>
                         <div class="formula-box">
                             <div class="formula">a<sub>s</sub> = v²/R = ω²·R</div>
-                            <div class="desc">Percepatan sentripetal (m/s²)</div>
+                            <div class="desc">Percepatan sentripetal (m/s²) — <strong style="color:#e85a4a;">menuju pusat</strong></div>
                         </div>
                         <div class="formula-box">
                             <div class="formula">F<sub>s</sub> = m·v²/R = m·ω²·R</div>
@@ -1335,17 +1368,16 @@
                         </div>
                         <div class="highlight-box">
                             <div class="label">⚠️ Perhatikan</div>
-                            <p>Percepatan sentripetal <strong>tidak mengubah besar kecepatan</strong>, hanya mengubah arahnya.</p>
+                            <p>Percepatan sentripetal <strong>tidak mengubah besar kecepatan</strong>, hanya mengubah arahnya. Arah percepatan sentripetal selalu <strong style="color:#e85a4a;">menuju pusat lingkaran</strong>.</p>
                         </div>
                     </div>
 
-                    <!-- HUBUNGAN RODA-RODA (MATERI) -->
+                    <!-- HUBUNGAN RODA-RODA -->
                     <div class="materi-card" style="grid-column: 1 / -1; border-color: rgba(245, 166, 35, 0.2);">
                         <h3 style="color: #f5a623;">⚙️ Hubungan Roda-Roda</h3>
                         <p style="margin-bottom:12px; color:#b0c8e0;">Hubungan antar roda yang saling terhubung memiliki aturan khusus berdasarkan jenis sambungannya. Ada <strong>3 jenis hubungan</strong>:</p>
 
                         <div class="roda-materi-grid">
-                            <!-- A. SEPOROS -->
                             <div class="roda-materi-card seporos">
                                 <h4><span class="icon">🔗</span> A. Seporos</h4>
                                 <p style="color:#b0c8e0; font-size:0.85rem;">Dua roda pada <strong>poros yang sama</strong>.</p>
@@ -1356,7 +1388,6 @@
                                 <p class="keterangan">Contoh: Roda gigi pada as roda yang sama</p>
                             </div>
 
-                            <!-- B. BERSINGGUNGAN -->
                             <div class="roda-materi-card bersinggungan">
                                 <h4><span class="icon">⛓️</span> B. Bersinggungan</h4>
                                 <p style="color:#b0c8e0; font-size:0.85rem;">Dua roda <strong>bersentuhan langsung</strong>.</p>
@@ -1367,7 +1398,6 @@
                                 <p class="keterangan">Contoh: Roda gigi yang bersentuhan</p>
                             </div>
 
-                            <!-- C. DIHUBUNGKAN TALI -->
                             <div class="roda-materi-card tali">
                                 <h4><span class="icon">🔧</span> C. Dihubungkan Tali</h4>
                                 <p style="color:#b0c8e0; font-size:0.85rem;">Dua roda <strong>dihubungkan dengan tali/rantai/sabuk</strong>.</p>
@@ -1397,7 +1427,7 @@
             </div>
 
             <!-- ============================================================
-            TAB 2: SIMULASI GERAK MELINGKAR
+            TAB 2: SIMULASI GERAK MELINGKAR (dengan vektor percepatan sentripetal)
             ============================================================ -->
             <div class="tab-content" id="tab-simulasi">
                 <div class="sim-layout">
@@ -1420,16 +1450,20 @@
 
                         <div class="sim-stats">
                             <div class="stat">
-                                <div class="val" id="simSpeed">0.0</div>
+                                <div class="val green" id="simSpeed">0.0</div>
                                 <div class="lbl">Kecepatan Linear (m/s)</div>
                             </div>
                             <div class="stat">
-                                <div class="val" id="simCentripetal">0.0</div>
+                                <div class="val red" id="simCentripetal">0.0</div>
                                 <div class="lbl">Percepatan Sentripetal (m/s²)</div>
                             </div>
                             <div class="stat">
-                                <div class="val" id="simForce">0.0</div>
+                                <div class="val blue" id="simForce">0.0</div>
                                 <div class="lbl">Gaya Sentripetal (N)</div>
+                            </div>
+                            <div class="stat">
+                                <div class="val orange" id="simPeriodDisplay">0.0</div>
+                                <div class="lbl">Periode (s)</div>
                             </div>
                         </div>
 
@@ -1439,8 +1473,10 @@
                             <button class="btn-sim reset" id="simReset">⟲ Reset</button>
                         </div>
 
-                        <div style="color:#6a8aaa; font-size:0.8rem; text-align:center; border-top:1px solid rgba(255,255,255,0.04); padding-top:12px;">
-                            ⏱ Periode: <span id="simPeriod">3.14</span> s &nbsp;|&nbsp; Frekuensi: <span id="simFreq">0.32</span> Hz
+                        <div class="sim-legend">
+                            <div class="item"><span class="dot" style="background:#5ac87a;"></span> v (kecepatan)</div>
+                            <div class="item"><span class="dot" style="background:#e85a4a;"></span> aₛ (percepatan sentripetal)</div>
+                            <div class="item"><span class="dot" style="background:#6ab8e8;"></span> Fₛ (gaya sentripetal)</div>
                         </div>
                     </div>
                 </div>
@@ -1535,7 +1571,7 @@
             </div>
 
             <!-- ============================================================
-            TAB 5: TES FORMATIF (dengan Nama, Kelas, Absen)
+            TAB 5: TES FORMATIF
             ============================================================ -->
             <div class="tab-content" id="tab-tes">
                 <div class="tes-container" id="tesContainer"></div>
@@ -1578,7 +1614,7 @@
     <script>
         // ================================================================
         //  GERAK MELINGKAR – MEDIA INTERAKTIF
-        //  Fitur: Materi, Simulasi GM, Soal L3, Kuis, Tes Formatif, Game
+        //  Fitur: Materi, Simulasi GM (dgn vektor aₛ), Soal L3, Kuis, Tes, Game
         // ================================================================
 
         // ----- NAVIGASI TAB -----
@@ -1609,7 +1645,7 @@
         });
 
         // ================================================================
-        //  SIMULASI GERAK MELINGKAR
+        //  SIMULASI GERAK MELINGKAR (dengan vektor percepatan sentripetal)
         // ================================================================
 
         const simCanvas = document.getElementById('simCanvas');
@@ -1624,8 +1660,7 @@
         const simSpeed = document.getElementById('simSpeed');
         const simCentripetal = document.getElementById('simCentripetal');
         const simForce = document.getElementById('simForce');
-        const simPeriod = document.getElementById('simPeriod');
-        const simFreq = document.getElementById('simFreq');
+        const simPeriodDisplay = document.getElementById('simPeriodDisplay');
 
         let simState = { angle: 0, running: false, animId: null, R: 2.0, omega: 2.0, m: 1.0 };
 
@@ -1641,29 +1676,36 @@
             ctxSim.fillStyle = '#0a1626';
             ctxSim.fillRect(0, 0, W, H);
 
+            // Lingkaran konsentris
             for (let r = 0.5; r <= 4; r += 0.5) {
                 ctxSim.beginPath();
                 ctxSim.arc(cx, cy, r * scale, 0, Math.PI * 2);
                 ctxSim.strokeStyle = r === simState.R ? 'rgba(106,184,232,0.15)' : 'rgba(255,255,255,0.03)';
                 ctxSim.lineWidth = r === simState.R ? 1.5 : 0.5;
                 ctxSim.stroke();
-                if (r === simState.R) { ctxSim.fillStyle = 'rgba(106,184,232,0.05)';
-                    ctxSim.fill(); }
+                if (r === simState.R) {
+                    ctxSim.fillStyle = 'rgba(106,184,232,0.05)';
+                    ctxSim.fill();
+                }
             }
 
+            // Label R
             ctxSim.fillStyle = 'rgba(255,255,255,0.15)';
             ctxSim.font = '10px monospace';
             ctxSim.textAlign = 'center';
             ctxSim.fillText(`R = ${simState.R.toFixed(1)} m`, cx + R_px / 2, cy + 14);
 
+            // Titik pusat
             ctxSim.beginPath();
             ctxSim.arc(cx, cy, 4, 0, Math.PI * 2);
             ctxSim.fillStyle = 'rgba(255,255,255,0.15)';
             ctxSim.fill();
 
+            // Posisi benda
             const x = cx + R_px * Math.cos(simState.angle);
             const y = cy + R_px * Math.sin(simState.angle);
 
+            // Jejak lintasan
             ctxSim.beginPath();
             for (let i = 0; i <= 100; i++) {
                 const a = simState.angle - i * 0.06;
@@ -1676,6 +1718,7 @@
             ctxSim.lineWidth = 2;
             ctxSim.stroke();
 
+            // Garis jari-jari
             ctxSim.beginPath();
             ctxSim.moveTo(cx, cy);
             ctxSim.lineTo(x, y);
@@ -1685,6 +1728,55 @@
             ctxSim.stroke();
             ctxSim.setLineDash([]);
 
+            // ============================================================
+            // VEKTOR PERCEPATAN SENTRIPETAL (MERAH) - BARU!
+            // Arah: dari benda menuju pusat lingkaran
+            // ============================================================
+            const as_magnitude = simState.R * simState.omega * simState.omega;
+            if (as_magnitude > 0.01) {
+                // Arah dari benda ke pusat
+                const dx = cx - x;
+                const dy = cy - y;
+                const len = Math.sqrt(dx * dx + dy * dy);
+                if (len > 1) {
+                    // Normalisasi dan skala
+                    const scaleA = 25 / (1 + as_magnitude * 0.3);
+                    const ax = (dx / len) * scaleA;
+                    const ay = (dy / len) * scaleA;
+
+                    // Gambar vektor percepatan sentripetal (merah)
+                    ctxSim.beginPath();
+                    ctxSim.moveTo(x, y);
+                    ctxSim.lineTo(x + ax, y + ay);
+                    ctxSim.strokeStyle = '#e85a4a';
+                    ctxSim.lineWidth = 3;
+                    ctxSim.shadowColor = 'rgba(232,90,74,0.5)';
+                    ctxSim.shadowBlur = 12;
+                    ctxSim.stroke();
+                    ctxSim.shadowBlur = 0;
+
+                    // Kepala panah
+                    const angle_a = Math.atan2(ay, ax);
+                    const headLen = 10;
+                    ctxSim.beginPath();
+                    ctxSim.moveTo(x + ax, y + ay);
+                    ctxSim.lineTo(x + ax - headLen * Math.cos(angle_a - 0.5), y + ay - headLen * Math.sin(angle_a - 0.5));
+                    ctxSim.lineTo(x + ax - headLen * Math.cos(angle_a + 0.5), y + ay - headLen * Math.sin(angle_a + 0.5));
+                    ctxSim.closePath();
+                    ctxSim.fillStyle = '#e85a4a';
+                    ctxSim.fill();
+
+                    // Label aₛ
+                    ctxSim.fillStyle = '#e85a4a';
+                    ctxSim.font = 'bold 12px sans-serif';
+                    ctxSim.textAlign = 'left';
+                    ctxSim.fillText('aₛ', x + ax + 6, y + ay - 4);
+                }
+            }
+
+            // ============================================================
+            // VEKTOR KECEPATAN (HIJAU) - tangensial
+            // ============================================================
             const vx = -R_px * simState.omega * Math.sin(simState.angle);
             const vy = R_px * simState.omega * Math.cos(simState.angle);
             const v_len = Math.sqrt(vx * vx + vy * vy);
@@ -1695,7 +1787,11 @@
                 ctxSim.lineTo(x + vx * scaleV, y + vy * scaleV);
                 ctxSim.strokeStyle = '#5ac87a';
                 ctxSim.lineWidth = 2.5;
+                ctxSim.shadowColor = 'rgba(90,200,122,0.3)';
+                ctxSim.shadowBlur = 8;
                 ctxSim.stroke();
+                ctxSim.shadowBlur = 0;
+
                 const a_v = Math.atan2(vy, vx);
                 const headLen = 10;
                 ctxSim.beginPath();
@@ -1707,38 +1803,54 @@
                 ctxSim.closePath();
                 ctxSim.fillStyle = '#5ac87a';
                 ctxSim.fill();
+
                 ctxSim.fillStyle = '#5ac87a';
-                ctxSim.font = '11px sans-serif';
-                ctxSim.fillText('v', x + vx * scaleV + 12, y + vy * scaleV - 4);
+                ctxSim.font = 'bold 12px sans-serif';
+                ctxSim.textAlign = 'left';
+                ctxSim.fillText('v', x + vx * scaleV + 10, y + vy * scaleV - 4);
             }
 
-            const as_x = -R_px * simState.omega * simState.omega * Math.cos(simState.angle);
-            const as_y = -R_px * simState.omega * simState.omega * Math.sin(simState.angle);
-            const as_len = Math.sqrt(as_x * as_x + as_y * as_y);
-            if (as_len > 1) {
-                const scaleA = 20 / as_len;
-                ctxSim.beginPath();
-                ctxSim.moveTo(x, y);
-                ctxSim.lineTo(x + as_x * scaleA, y + as_y * scaleA);
-                ctxSim.strokeStyle = '#e87a3a';
-                ctxSim.lineWidth = 2.5;
-                ctxSim.stroke();
-                const a_a = Math.atan2(as_y, as_x);
-                const headLen = 10;
-                ctxSim.beginPath();
-                ctxSim.moveTo(x + as_x * scaleA, y + as_y * scaleA);
-                ctxSim.lineTo(x + as_x * scaleA - headLen * Math.cos(a_a - 0.5), y + as_y * scaleA - headLen * Math.sin(a_a -
-                0.5));
-                ctxSim.lineTo(x + as_x * scaleA - headLen * Math.cos(a_a + 0.5), y + as_y * scaleA - headLen * Math.sin(a_a +
-                0.5));
-                ctxSim.closePath();
-                ctxSim.fillStyle = '#e87a3a';
-                ctxSim.fill();
-                ctxSim.fillStyle = '#e87a3a';
-                ctxSim.font = '11px sans-serif';
-                ctxSim.fillText('aₛ', x + as_x * scaleA - 20, y + as_y * scaleA - 6);
+            // ============================================================
+            // VEKTOR GAYA SENTRIPETAL (BIRU) - searah dengan aₛ
+            // ============================================================
+            const Fs = simState.m * as_magnitude;
+            if (Fs > 0.01 && as_magnitude > 0.01) {
+                const dx = cx - x;
+                const dy = cy - y;
+                const len = Math.sqrt(dx * dx + dy * dy);
+                if (len > 1) {
+                    const scaleF = 20 / (1 + Fs * 0.15);
+                    const fx = (dx / len) * scaleF;
+                    const fy = (dy / len) * scaleF;
+
+                    ctxSim.beginPath();
+                    ctxSim.moveTo(x, y);
+                    ctxSim.lineTo(x + fx, y + fy);
+                    ctxSim.strokeStyle = '#6ab8e8';
+                    ctxSim.lineWidth = 2.5;
+                    ctxSim.shadowColor = 'rgba(106,184,232,0.3)';
+                    ctxSim.shadowBlur = 8;
+                    ctxSim.stroke();
+                    ctxSim.shadowBlur = 0;
+
+                    const a_f = Math.atan2(fy, fx);
+                    const headLen = 10;
+                    ctxSim.beginPath();
+                    ctxSim.moveTo(x + fx, y + fy);
+                    ctxSim.lineTo(x + fx - headLen * Math.cos(a_f - 0.5), y + fy - headLen * Math.sin(a_f - 0.5));
+                    ctxSim.lineTo(x + fx - headLen * Math.cos(a_f + 0.5), y + fy - headLen * Math.sin(a_f + 0.5));
+                    ctxSim.closePath();
+                    ctxSim.fillStyle = '#6ab8e8';
+                    ctxSim.fill();
+
+                    ctxSim.fillStyle = '#6ab8e8';
+                    ctxSim.font = 'bold 12px sans-serif';
+                    ctxSim.textAlign = 'right';
+                    ctxSim.fillText('Fₛ', x + fx - 8, y + fy - 4);
+                }
             }
 
+            // Benda (bola)
             const grad = ctxSim.createRadialGradient(x - 8, y - 10, 4, x, y, 22);
             grad.addColorStop(0, '#7ac8f0');
             grad.addColorStop(0.5, '#3a8ab5');
@@ -1755,11 +1867,20 @@
             ctxSim.fillStyle = 'rgba(255,255,255,0.3)';
             ctxSim.fill();
 
+            // Label sudut
             ctxSim.fillStyle = 'rgba(255,255,255,0.1)';
             ctxSim.font = '10px monospace';
             ctxSim.textAlign = 'left';
             ctxSim.fillText(`θ = ${((simState.angle * 180 / Math.PI) % 360).toFixed(0)}°`, 14, 26);
             ctxSim.fillText(`ω = ${simState.omega.toFixed(1)} rad/s`, 14, 44);
+
+            // Keterangan arah percepatan
+            if (simState.running || simState.angle > 0) {
+                ctxSim.fillStyle = 'rgba(232,90,74,0.2)';
+                ctxSim.font = '9px sans-serif';
+                ctxSim.textAlign = 'center';
+                ctxSim.fillText('⬅ aₛ menuju pusat', cx, H - 14);
+            }
 
             if (simState.running) {
                 ctxSim.fillStyle = 'rgba(90,200,122,0.4)';
@@ -1774,12 +1895,11 @@
             const as = simState.R * simState.omega * simState.omega;
             const Fs = simState.m * as;
             const T = 2 * Math.PI / simState.omega;
-            const f = 1 / T;
+
             simSpeed.textContent = v.toFixed(2);
             simCentripetal.textContent = as.toFixed(2);
             simForce.textContent = Fs.toFixed(2);
-            simPeriod.textContent = T.toFixed(2);
-            simFreq.textContent = f.toFixed(2);
+            simPeriodDisplay.textContent = T.toFixed(2);
         }
 
         function simLoop() {
@@ -1791,17 +1911,23 @@
             }
         }
 
-        radiusSlider.addEventListener('input', () => { simState.R = parseFloat(radiusSlider.value);
+        radiusSlider.addEventListener('input', () => {
+            simState.R = parseFloat(radiusSlider.value);
             radiusLabel.textContent = simState.R.toFixed(1) + ' m';
             drawSimulation();
-            updateSimStats(); });
-        omegaSlider.addEventListener('input', () => { simState.omega = parseFloat(omegaSlider.value);
+            updateSimStats();
+        });
+        omegaSlider.addEventListener('input', () => {
+            simState.omega = parseFloat(omegaSlider.value);
             omegaLabel.textContent = simState.omega.toFixed(1) + ' rad/s';
             drawSimulation();
-            updateSimStats(); });
-        massSlider.addEventListener('input', () => { simState.m = parseFloat(massSlider.value);
+            updateSimStats();
+        });
+        massSlider.addEventListener('input', () => {
+            simState.m = parseFloat(massSlider.value);
             massLabel.textContent = simState.m.toFixed(1) + ' kg';
-            updateSimStats(); });
+            updateSimStats();
+        });
 
         document.getElementById('simPlay').addEventListener('click', () => {
             if (!simState.running) {
@@ -1972,7 +2098,7 @@
         renderQuiz();
 
         // ================================================================
-        //  TES FORMATIF (dengan Nama, Kelas, Absen)
+        //  TES FORMATIF
         // ================================================================
 
         const tesData = [{
@@ -2058,7 +2184,6 @@
                 return;
             }
 
-            // Mode siswa - cek identitas
             if (!tesState.identitasValid) {
                 renderIdentitas(container);
                 return;
@@ -2502,7 +2627,6 @@
                 return;
             }
 
-            // Header CSV
             let csv = 'No,Nama,Kelas,Absen,Benar,Total,Persentase,Status,Waktu\n';
 
             hasilList.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
@@ -2512,10 +2636,10 @@
                 const date = new Date(h.timestamp);
                 const dateStr = date.toLocaleDateString('id-ID') + ' ' + date.toLocaleTimeString('id-ID', { hour: '2-digit',
                     minute: '2-digit' });
-                csv += `${i+1},"${h.nama || 'Tidak diketahui'}","${h.kelas || '-'}",${h.absen || '-'},${h.benar},${h.total},${persen},${status},"${dateStr}"\n`;
+                csv +=
+                    `${i+1},"${h.nama || 'Tidak diketahui'}","${h.kelas || '-'}",${h.absen || '-'},${h.benar},${h.total},${persen},${status},"${dateStr}"\n`;
             });
 
-            // Download CSV
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
@@ -2526,7 +2650,6 @@
             showNotification('📤 Data berhasil diekspor ke CSV!', true);
         }
 
-        // Inisialisasi Tes
         const savedAnswers = loadTesData();
         const savedAnswerKeys = Object.keys(savedAnswers).filter(k => !k.startsWith('hasil_'));
         if (savedAnswerKeys.length > 0) {
@@ -2800,8 +2923,8 @@
         // ================================================================
 
         console.log('🔄 Gerak Melingkar Interaktif siap!');
-        console.log('📚 Fitur: Materi (dgn Hubungan Roda), Simulasi GM, Soal L3, Kuis, Tes Formatif, Game');
-        console.log('📋 Tes Formatif: Siswa wajib isi Nama, Kelas, Absen. Data dapat diekspor ke CSV.');
+        console.log('📚 Fitur: Materi, Simulasi GM (dgn vektor aₛ), Soal L3, Kuis, Tes Formatif, Game');
+        console.log('📌 Vektor percepatan sentripetal (merah) selalu menuju pusat lingkaran');
 
         document.querySelector('[data-tab="materi"]').click();
     </script>
